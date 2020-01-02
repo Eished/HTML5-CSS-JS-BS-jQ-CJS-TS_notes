@@ -811,21 +811,841 @@ p {color:blue;}
    | [outline-width](https://www.runoob.com/cssref/pr-outline-width.html) | 设置轮廓的宽度                 | thin medium thick *length *inherit                           | 2    |
 
 ### 3.2 CSS基本样式讲解
+
+#### 3.2.1 CSS 介绍
+
+1. CSS 概述：
+   - CSS 指层叠样式表
+   - CSS 样式表极大的提高了工作效率
+
+#### 3.2.2 CSS 基础语法
+
+1. `'selector' { 'property': 'value'}`
+   - 例：`h1 {color: red; font-size: 14px;}`
+   - 属性如果大于一个，属性之间用分号隔开；
+   - 如果值大于一个，则要加上引号：
+     - 例：`p { font-family: "sans serif" }`
+
+#### 3.2.3 CSS 高级语法
+
+1. 选择器分组：
+
+   `h1, h2, h3, h4, h5, h6 { color: red}`
+
+2. 继承：` body { color: green} `
+
+   - 子元素会继承父元素的样式
+
+#### 3.2.1 CSS 派生选择器
+
+1. 根据元素在其位置的父子关系来定义样式
+
+#### 3.2.1 CSS id选择器
+
+1. id 选择器：
+   - id 选择器可以为标有唯一 id 的HTML元素指定样式
+   - id 选择器以 # 来定义
+2. id 选择器和派生选择器：
+   - 目前常用 id 选择器建立派生选择器
+   - 例：` #id li { color: blue} `
+
+#### 3.2.1 CSS 类选择器
+
+1. 类选择器（class）：类选择器以 `.` 显示
+2. `class` 也可以用作派生选择器
+
+#### 3.2.1 CSS 属性选择器
+
+1. 属性选择器：对带有指定属性的HTML元素设置样式
+
+   - 例：
+
+     ```
+     下面的例子是把包含标题（title）的所有元素变为蓝色：
+     [title]
+     {
+         color:blue;
+     }
+     ```
+
+2. 属性和值选择器
+
+   - 例：
+
+     ```css
+     [title=runoob]
+     {
+         border:5px solid green;
+     }
+     /* 属性和值的选择器 - 多值 */
+     [title~=hello] { color:blue; }
+     ```
+
+     > ## CSS 属性选择器 *=, |=, ^=, $=, ~= 的区别
+     >
+     > **先上总结:**
+     >
+     > **"value 是完整单词"** 类型的比较符号: **~=**, **|=**
+     >
+     > **"拼接字符串**" 类型的比较符号: ***=**, **^=**, **$=**
+     >
+     > 
+     >
+     > **1.attribute 属性中包含 value:**　
+     >
+     > [attribute~=value] 属性中包含独立的单词为 value，例如：
+     >
+     > ```
+     > [title~=flower]  -->  <img src="/i/eg_tulip.jpg" title="tulip flower" />
+     > ```
+     >
+     > [attribute*=value] 属性中做字符串拆分，只要能拆出来 value 这个词就行，例如：
+     >
+     > ```
+     > [title*=flower]   -->  <img src="/i/eg_tulip.jpg" title="ffffflowerrrrrr" />
+     > ```
+     >
+     > **2.attribute 属性以 value 开头:**
+     >
+     > [attribute|=value] 属性中必须是完整且唯一的单词，或者以 **-** 分隔开：，例如：
+     >
+     > ```
+     > [lang|=en]     -->  <p lang="en">  <p lang="en-us">
+     > ```
+     >
+     > [
+     >
+     > attribute^=value] 属性的前几个字母是 value 就可以，例如：
+     >
+     > ```
+     > [lang^=en]    -->  <p lang="ennn">
+     > ```
+     >
+     > **3.attribute 属性以 value 结尾:**
+     >
+     > ```
+     > [attribute$=value] 属性的后几个字母是 value 就可以，例如：
+     > a[src$=".pdf"]
+     > ```
+
 ### 3.3 CSS盒子模型
 
+#### 3.3.1 CSS 盒子模型概述
+
+1. 盒子模型的内容范围包括：
+   - margin、border、padding、content 部分组成
+
+#### 3.3.2 CSS 内边距
+
+1. 内边距：padding: 上 右 下 左
+
+   ## padding（填充）
+
+   当元素的 padding（填充）内边距被清除时，所释放的区域将会受到元素背景颜色的填充。
+
+   单独使用 padding 属性可以改变上下左右的填充。
+
+   ![img](E:\web\学习笔记\HTML5+CSS+JS+Bootstrap+jQuery+CreateJS+TypeScript+实战系列视频_notes\readme.assets\VlwVi.png)
+
+   | 属性                                                         | 说明                                       |
+   | :----------------------------------------------------------- | :----------------------------------------- |
+   | [padding](https://www.runoob.com/cssref/pr-padding.html)     | 使用简写属性设置在一个声明中的所有填充属性 |
+   | [padding-bottom](https://www.runoob.com/cssref/pr-padding-bottom.html) | 设置元素的底部填充                         |
+   | [padding-left](https://www.runoob.com/cssref/pr-padding-left.html) | 设置元素的左部填充                         |
+   | [padding-right](https://www.runoob.com/cssref/pr-padding-right.html) | 设置元素的右部填充                         |
+   | [padding-top](https://www.runoob.com/cssref/pr-padding-top.html) | 设置元素的顶部填充                         |
+
+#### 3.3.3 CSS 边框
+
+1. 边框的样式：border-style
+
+   - none: 默认无边框
+
+     dotted: 定义一个点线边框
+
+     dashed: 定义一个虚线边框
+
+     solid: 定义实线边框
+
+     double: 定义两个边框。 两个边框的宽度和 border-width 的值相同
+
+     groove: 定义3D沟槽边框。效果取决于边框的颜色值
+
+     ridge: 定义3D脊边框。效果取决于边框的颜色值
+
+     inset:定义一个3D的嵌入边框。效果取决于边框的颜色值
+
+     outset: 定义一个3D突出边框。 效果取决于边框的颜色值
+
+   - border-style属性可以有1-4个值：
+
+     - border-style:dotted solid double dashed;
+       - 上边框是 dotted
+       - 右边框是 solid
+       - 底边框是 double
+       - 左边框是 dashed
+     - border-style:dotted solid double;
+       - 上边框是 dotted
+       - 左、右边框是 solid
+       - 底边框是 double
+     - border-style:dotted solid;
+       - 上、底边框是 dotted
+       - 右、左边框是 solid
+     - border-style:dotted;
+       - 四面边框是 dotted
+
+     上面的例子用了border-style。然而，它也可以和border-width 、 border-color一起使用
+
+   - > border-style：属性1，属性2，属性3，属性4
+     >
+     > 上->右->下->左
+     >
+     > border-style：属性1，属性2，属性3
+     >
+     > 上->左右->下
+     >
+     > border-style：属性1，属性2
+     >
+     > 上下->左右
+     >
+     > border-style：属性1
+     >
+     > 上下左右属性相同
+
+   | 属性                                                         | 描述                                                         |
+   | :----------------------------------------------------------- | :----------------------------------------------------------- |
+   | [border](https://www.runoob.com/cssref/pr-border.html)       | 简写属性，用于把针对四个边的属性设置在一个声明。             |
+   | [border-style](https://www.runoob.com/cssref/pr-border-style.html) | 用于设置元素所有边框的样式，或者单独地为各边设置边框样式。   |
+   | [border-width](https://www.runoob.com/cssref/pr-border-width.html) | 简写属性，用于为元素的所有边框设置宽度，或者单独地为各边边框设置宽度。 |
+   | [border-color](https://www.runoob.com/cssref/pr-border-color.html) | 简写属性，设置元素的所有边框中可见部分的颜色，或为 4 个边分别设置颜色。 |
+   | [border-bottom](https://www.runoob.com/cssref/pr-border-bottom.html) | 简写属性，用于把下边框的所有属性设置到一个声明中。           |
+   | [border-bottom-color](https://www.runoob.com/cssref/pr-border-bottom-color.html) | 设置元素的下边框的颜色。                                     |
+   | [border-bottom-style](https://www.runoob.com/cssref/pr-border-bottom-style.html) | 设置元素的下边框的样式。                                     |
+   | [border-bottom-width](https://www.runoob.com/cssref/pr-border-bottom-width.html) | 设置元素的下边框的宽度。                                     |
+   | [border-left](https://www.runoob.com/cssref/pr-border-left.html) | 简写属性，用于把左边框的所有属性设置到一个声明中。           |
+   | [border-left-color](https://www.runoob.com/cssref/pr-border-left-color.html) | 设置元素的左边框的颜色。                                     |
+   | [border-left-style](https://www.runoob.com/cssref/pr-border-left-style.html) | 设置元素的左边框的样式。                                     |
+   | [border-left-width](https://www.runoob.com/cssref/pr-border-left-width.html) | 设置元素的左边框的宽度。                                     |
+   | [border-right](https://www.runoob.com/cssref/pr-border-right.html) | 简写属性，用于把右边框的所有属性设置到一个声明中。           |
+   | [border-right-color](https://www.runoob.com/cssref/pr-border-right-color.html) | 设置元素的右边框的颜色。                                     |
+   | [border-right-style](https://www.runoob.com/cssref/pr-border-right-style.html) | 设置元素的右边框的样式。                                     |
+   | [border-right-width](https://www.runoob.com/cssref/pr-border-right-width.html) | 设置元素的右边框的宽度。                                     |
+   | [border-top](https://www.runoob.com/cssref/pr-border-top.html) | 简写属性，用于把上边框的所有属性设置到一个声明中。           |
+   | [border-top-color](https://www.runoob.com/cssref/pr-border-top-color.html) | 设置元素的上边框的颜色。                                     |
+   | [border-top-style](https://www.runoob.com/cssref/pr-border-top-style.html) | 设置元素的上边框的样式。                                     |
+   | [border-top-width](https://www.runoob.com/cssref/pr-border-top-width.html) | 设置元素的上边框的宽度。                                     |
+
+2. CSS3 边框：
+
+   - border-radius：圆角边框
+   - box-shadow：边框阴影
+   - border-image：边框图片
+     - border-radius:10px;width: 50px;border: solid 2px yellow;
+
+#### 3.3.4 CSS 外边距
+
+1. 围绕在内容边框的区域，默认透明，接收任意长度单位
+
+2. margin属性可以有一到四个值。
+
+   - margin:25px 50px 75px 100px;
+     - 上边距为25px
+     - 右边距为50px
+     - 下边距为75px
+     - 左边距为100px
+   - margin:25px 50px 75px;
+     - 上边距为25px
+     - 左右边距为50px
+     - 下边距为75px
+   - margin:25px 50px;
+     - 上下边距为25px
+     - 左右边距为50px
+   - margin:25px;
+     - 所有的4个边距都是25px
+
+   | 属性                                                         | 描述                                       |
+   | :----------------------------------------------------------- | :----------------------------------------- |
+   | [margin](https://www.runoob.com/cssref/pr-margin.html)       | 简写属性。在一个声明中设置所有外边距属性。 |
+   | [margin-bottom](https://www.runoob.com/cssref/pr-margin-bottom.html) | 设置元素的下外边距。                       |
+   | [margin-left](https://www.runoob.com/cssref/pr-margin-left.html) | 设置元素的左外边距。                       |
+   | [margin-right](https://www.runoob.com/cssref/pr-margin-right.html) | 设置元素的右外边距。                       |
+   | [margin-top](https://www.runoob.com/cssref/pr-margin-top.html) | 设置元素的上外边距。                       |
+
+#### 3.3.5 CSS 外边距合并
+
+1. 外边距合并：是一个边距叠加的概念
+2. **相交 margin 值会合并：以大的值为准**
+
+#### 3.3.6 CSS 盒子模型应用
+
+1. 极客学院官网
+
 ###  3.4 CSS定位
+
+#### 3.4.1 定位
+
+1. CSS 定位：改变元素在页面上的位置
+
+2. CSS 定位机制：
+
+   - 普通流(static)：元素按照其在HTML中的位置顺序决定排布过程
+   - 浮动(relative/absolute)
+   - 绝对布局(fixed)
+
+3. position 属性的五个值：
+
+   - static : 偏移无效，z-index 无效
+   - relative ：相对偏移，保留位置，z-index 有效
+   - fixed ：固定定位，固定在可视区位置
+   - absolute ：绝对定位，不保留位置脱离文档流，相对于父元素或文档定位，z-index 有效
+   - sticky
+
+4. "CSS" 列中的数字表示哪个CSS(CSS1 或者CSS2)版本定义了该属性。
+
+   | 属性                                                         | 说明                                                         | 值                                                           | CSS  |
+   | :----------------------------------------------------------- | :----------------------------------------------------------- | :----------------------------------------------------------- | :--- |
+   | [bottom](https://www.runoob.com/cssref/pr-pos-bottom.html)   | 定义了定位元素下外边距边界与其包含块下边界之间的偏移。       | auto *length % *inherit                                      | 2    |
+   | [clip](https://www.runoob.com/cssref/pr-pos-clip.html)       | 剪辑一个绝对定位的元素                                       | *shape *auto inherit                                         | 2    |
+   | [cursor](https://www.runoob.com/cssref/pr-class-cursor.html) | 显示光标移动到指定的类型                                     | *url* auto crosshair default pointer move e-resize ne-resize nw-resize n-resize se-resize sw-resize s-resize w-resize text wait help | 2    |
+   | [left](https://www.runoob.com/cssref/pr-pos-left.html)       | 定义了定位元素左外边距边界与其包含块左边界之间的偏移。       | auto *length % *inherit                                      | 2    |
+   | [overflow](https://www.runoob.com/cssref/pr-pos-overflow.html) | 设置当元素的内容溢出其区域时发生的事情。                     | auto hidden scroll visible inherit                           | 2    |
+   | [overflow-y](https://www.runoob.com/css/cssref/css3-pr-overflow-y.html) | 指定如何处理顶部/底部边缘的内容溢出元素的内容区域            | auto hidden scroll visible no-display no-content             | 2    |
+   | [overflow-x](https://www.runoob.com/css/cssref//cssref/css3-pr-overflow-x.html) | 指定如何处理右边/左边边缘的内容溢出元素的内容区域            | auto hidden scroll visible no-display no-content             | 2    |
+   | [position](https://www.runoob.com/cssref/pr-class-position.html) | 指定元素的定位类型                                           | absolute fixed relative static inherit                       | 2    |
+   | [right](https://www.runoob.com/cssref/pr-pos-right.html)     | 定义了定位元素右外边距边界与其包含块右边界之间的偏移。       | auto *length % *inherit                                      | 2    |
+   | [top](https://www.runoob.com/cssref/pr-pos-top.html)         | 定义了一个定位元素的上外边距边界与其包含块上边界之间的偏移。 | auto *length % *inherit                                      | 2    |
+   | [z-index](https://www.runoob.com/cssref/pr-pos-z-index.html) | 设置元素的堆叠顺序                                           | *number *auto inherit                                        | 2    |
+
+#### 3.4.2 浮动
+
+1. 浮动：同级文档流浮动，在父容器内，占有位置
+
+   - float 属性可用的值
+     - left：元素向左浮动
+     - right：元素向右浮动
+     - none：不浮动
+     - inherit：从父元素继承
+
+2. clear 属性：
+
+   - 清楚浮动属性（包括继承的浮动）
+   - `.text_line { clear:both; }`
+
+   | 属性                                                       | 描述                               | 值                           | CSS  |
+   | :--------------------------------------------------------- | :--------------------------------- | :--------------------------- | :--- |
+   | [clear](https://www.runoob.com/cssref/pr-class-clear.html) | 指定不允许元素周围有浮动元素。     | left right both none inherit | 1    |
+   | [float](https://www.runoob.com/cssref/pr-class-float.html) | 指定一个盒子（元素）是否可以浮动。 | left right none inherit      | 1    |
+
 ###  3.5 CSS选择器
+
+#### 3.5.1 元素选择器
+
+1. 最常见、最基本的选择器
+   - 例：`h1 {}`
+
+#### 3.5.2 选择器分组
+
+1. 标签之间使用`,`分隔， `h1,h2,h3,a,p { color: red}`
+2. 通配符：`* {}`
+
+#### 3.5.3 类选择器详解
+
+1. 类选择器允许以一种独立于文档元素的方式来指定样式
+   - `.class {}`
+2. 结合元素选择器
+   - `a.class {}`
+3. 多类选择器
+   - `.class1 {}`
+   - ` .class2 .class3 {}`
+   - 拥有`class1~3`所有属性：`<p class="class1 class2 class3"> text </P>`
+
+#### 3.5.4 ID 选择器详解
+
+1. ID 选择器类似于类选择器
+   - 例：#id {}
+2. ID选择器与类选择器区别：
+   1. ID选择器是唯一的，类可以重复多个
+   2. 不能多个ID选择器结合使用
+   3. 使用 JS 时一般用 ID
+   4. ID 选择器先找到结构再找到内容再渲染，类选择器先渲染再找结构再找内容
+
+#### 3.5.5 属性选择器详解
+
+1.  3.2.1章节已详细说明
+
+2. 多值选择器：
+
+   ```css
+   [title=runoob]
+   {
+       border:5px solid green;
+   }
+   /* 属性和值的选择器 - 多值 */
+   [title~=hello] { color:blue; }
+   ```
+
+#### 3.5.6 后代选择器
+
+1. 后代选择器：
+   - 可以选择某元素后代的元素，可以跨子代
+   - 例：`p strong { color: blue}`
+
+#### 3.5.7 子元素选择器
+
+1. 只能选择某元素的子元素
+   - 例：`h1>strong { color: blue}`
+
+#### 3.5.8 相邻兄弟选择器
+
+1. 选择同一个父元素下的后一个相邻元素
+   - 例：`h1+p{ color:bllue}`
+
 ### 3.6 CSS常用操作
+
+#### 3.6.1 对齐操作
+
+1. 水平对齐 `margin` 
+
+   - 水平居中对齐一个元素(如 `<div>`), 可以使用 `margin: auto`
+     - **注意:** 如果没有设置 **width** 属性(或者设置 100%)，居中对齐将不起作用。
+
+2. 垂直居中对齐 `padding`
+
+   - 水平和垂直都居中，可以使用 `padding` 和 `text-align: center`:
+
+3. 左右对齐 `position` 
+
+   - `position: absolute;` 属性来对齐元素，手动
+   - 垂直居中 `transform: translate(-50%, -50%);` 
+
+4. 左右对齐 `float` 
+
+   - 对 `<body>` 元素的外边距和内边距进行预定义，可以避免在不同的浏览器中出现可见的差异。
+   - 在父元素上添加 `overflow: auto;` 来解决子元素溢出的问题:
+
+5. 文本对齐 `text-align` 
+
+   - 如果仅仅是为了文本在元素内居中对齐，可以使用 `text-align: center;`
+
+   - 垂直居中 `line-height`
+
+     > 设置容器上下 padding 相同实现垂直居中和使用 line-height=height 实现垂直居中仅对单行文本有效，当文本行数超过单行时：
+     >
+     > -  1）**padding**：文本仍然处于容器垂直居中的位置，但是容器的 height 会随着文本行数的增加而增大；
+     > -  2）**line-height=height**：容器的 height 不变，line-height 是文本的行间距，文本会溢出容器显示；
+     >
+     > 多行文本可使用 **vertical-align: middle;** 来实现元素的垂直居中，但是如果子元素的内容体积大于父元素的内容体积时，仍然会溢出，后面需要使用文字溢出处理来解决。
+
+#### 3.6.2 尺寸操作
+
+1. 属性
+
+   | 属性                                                         | 描述                 |
+   | :----------------------------------------------------------- | :------------------- |
+   | [height](https://www.runoob.com/cssref/pr-dim-height.html)   | 设置元素的高度。     |
+   | [line-height](https://www.runoob.com/cssref/pr-dim-line-height.html) | 设置行高。           |
+   | [max-height](https://www.runoob.com/cssref/pr-dim-max-height.html) | 设置元素的最大高度。 |
+   | [max-width](https://www.runoob.com/cssref/pr-dim-max-width.html) | 设置元素的最大宽度。 |
+   | [min-height](https://www.runoob.com/cssref/pr-dim-min-height.html) | 设置元素的最小高度。 |
+   | [min-width](https://www.runoob.com/cssref/pr-dim-min-width.html) | 设置元素的最小宽度。 |
+   | [width](https://www.runoob.com/cssref/pr-dim-width.html)     | 设置元素的宽度。     |
+
+#### 3.6.3 分类操作
+
+1. 属性
+
+   | 属性       | 描述                                   |
+   | ---------- | -------------------------------------- |
+   | clear      | 设置一个元素的侧面受否允许浮动其它元素 |
+   | cursor     | 当前鼠标指向某元素之上时现实的指针类型 |
+   | display    | 是否及如何显示元素                     |
+   | float      | 元素再哪个方向浮动                     |
+   | position   | 元素放置到静态、绝对、相对、固定的位置 |
+   | visibility | 设置元素是否可见                       |
+
+#### 3.6.4 导航栏
+
+1. 垂直导航栏
+   1. 去掉 `li` 点：`list-style-type:none`
+   2. 去掉 `a` 下划线：`text-decoration:none`
+   3. `li` 显示在一行：`display: inline`
+2. 水平导航栏
+3. 导航栏效果
+
+#### 3.6.5 图片操作
+
+1. 使用CSS创建图片廊
+
+   ` <img src="./demo3.jpg" alt="图片文本描述" width="300" height="200">`
+
+2. 图片透明度
+
+   ```css
+   img
+   {
+     opacity:0.4;
+     filter:alpha(opacity=40); /*  IE8 及其更早版本 */
+   }
+   img:hover
+   {
+     opacity:1.0;
+     filter:alpha(opacity=100); /* IE8 及其更早版本 */
+   }
+   ```
+
 ###  3.7 CSS动画—页面特效
+
+#### 3.7.1 2D/3D 转换
+
+1. 通过CSS3转换，我们能够对元素进行移动、缩放、转动、拉长或拉伸
+
+   - 转换：使元素改变形状、尺寸和位置的一种效果
+   - 可以使用 2D/3D 来转换元素
+
+2. 2D 转换方法：
+
+   - `translate()`：根据左(X轴)和顶部(Y轴)位置给定的参数，从当前元素位置移动
+
+     - ```CSS
+       div
+       {
+       transform: translate(50px,100px);
+       -ms-transform: translate(50px,100px); /* IE 9 */
+       -webkit-transform: translate(50px,100px); /* Safari and Chrome */
+       }
+       ```
+
+   - `rotate()`：在一个给定度数顺时针旋转的元素。负值是允许的，这样是元素逆时针旋转。
+
+     - ```CSS
+       div
+       {
+       transform: rotate(30deg);
+       -ms-transform: rotate(30deg); /* IE 9 */
+       -webkit-transform: rotate(30deg); /* Safari and Chrome */
+       }
+       ```
+
+   - `scale()`：该元素增加或减少的大小，取决于宽度（X轴）和高度（Y轴）的参数
+
+     - ```CSS
+       -ms-transform:scale(2,3); /* IE 9 */
+       -webkit-transform: scale(2,3); /* Safari */
+       transform: scale(2,3); /* 标准语法 */
+       ```
+
+   - `skew()`：`transform:skew(angle, angle);`
+
+     - ```CSS
+       div
+       {
+       transform: skew(30deg,20deg);
+       -ms-transform: skew(30deg,20deg); /* IE 9 */
+       -webkit-transform: skew(30deg,20deg); /* Safari and Chrome */
+       }
+       ```
+
+     > - 包含两个参数值，分别表示X轴和Y轴倾斜的角度，如果第二个参数为空，则默认为0，参数为负表示向相反方向倾斜。
+     >   - skewX(angle);表示只在X轴(水平方向)倾斜。
+     >   - skewY(angle);表示只在Y轴(垂直方向)倾斜。
+
+   - `matrix()`：
+
+     - ```CSS
+     div
+       {
+       transform:matrix(0.866,0.5,-0.5,0.866,0,0);
+       -ms-transform:matrix(0.866,0.5,-0.5,0.866,0,0); /* IE 9 */
+       -webkit-transform:matrix(0.866,0.5,-0.5,0.866,0,0); /* Safari and Chrome */
+       }
+       ```
+     
+     > - matrix()方法和2D变换方法合并成一个。
+     >
+     >   matrix 方法有六个参数，包含旋转，缩放，移动（平移）和倾斜功能。
+
+3. 新的转换属性：
+
+   | Property                                                     | 描述                   | CSS  |
+   | :----------------------------------------------------------- | :--------------------- | :--- |
+   | [transform](https://www.runoob.com/cssref/css3-pr-transform.html) | 适用于2D或3D转换的元素 | 3    |
+   | [transform-origin](https://www.runoob.com/cssref/css3-pr-transform-origin.html) | 允许您更改转化元素位置 | 3    |
+
+4. 2D 转换方法：
+
+   | 函数                            | 描述                                     |
+   | :------------------------------ | :--------------------------------------- |
+   | matrix(*n*,*n*,*n*,*n*,*n*,*n*) | 定义 2D 转换，使用六个值的矩阵。         |
+   | translate(*x*,*y*)              | 定义 2D 转换，沿着 X 和 Y 轴移动元素。   |
+   | translateX(*n*)                 | 定义 2D 转换，沿着 X 轴移动元素。        |
+   | translateY(*n*)                 | 定义 2D 转换，沿着 Y 轴移动元素。        |
+   | scale(*x*,*y*)                  | 定义 2D 缩放转换，改变元素的宽度和高度。 |
+   | scaleX(*n*)                     | 定义 2D 缩放转换，改变元素的宽度。       |
+   | scaleY(*n*)                     | 定义 2D 缩放转换，改变元素的高度。       |
+   | rotate(*angle*)                 | 定义 2D 旋转，在参数中规定角度。         |
+   | skew(*x-angle*,*y-angle*)       | 定义 2D 倾斜转换，沿着 X 和 Y 轴。       |
+   | skewX(*angle*)                  | 定义 2D 倾斜转换，沿着 X 轴。            |
+   | skewY(*angle*)                  | 定义 2D 倾斜转换，沿着 Y 轴。            |
+
+5. 3D 转换方法：
+
+   - `rotateX()` ：围绕其在一个给定度数X轴旋转的元素
+   - `rotateY()` ：围绕其在一个给定度数Y轴旋转的元素
+
+6. 表格中的数字表示支持该属性的第一个浏览器版本号。
+
+   紧跟在 -webkit-, -ms- 或 -moz- 前的数字为支持该前缀属性的第一个浏览器版本号。
+
+   | 属性                                  | chrome             | IE   | FireFox         | Safari       | Opera              |
+   | :------------------------------------ | :----------------- | ---- | --------------- | ------------ | ------------------ |
+   | transform                             | 36.0 12.0 -webkit- | 10.0 | 16.0 10.0 -moz- | 4.0 -webkit- | 23.0 15.0 -webkit- |
+   | transform-origin (three-value syntax) | 36.0 12.0 -webkit- | 10.0 | 16.0 10.0 -moz- | 4.0 -webkit- | 23.0 15.0 -webkit- |
+   | transform-style                       | 36.0 12.0 -webkit- | 11.0 | 16.0 10.0 -moz- | 4.0 -webkit- | 23.0 15.0 -webkit- |
+   | perspective                           | 36.0 12.0 -webkit- | 10.0 | 16.0 10.0 -moz- | 4.0 -webkit- | 23.0 15.0 -webkit- |
+   | perspective-origin                    | 36.0 12.0 -webkit- | 10.0 | 16.0 10.0 -moz- | 4.0 -webkit- | 23.0 15.0 -webkit- |
+   | backface-visibility                   | 36.0 12.0 -webkit- | 10.0 | 16.0 10.0 -moz- | 4.0 -webkit- | 23.0 15.0 -webkit- |
+
+7. 下表列出了所有的转换属性：
+
+   | 属性                                                         | 描述                                 | CSS  |
+   | :----------------------------------------------------------- | :----------------------------------- | :--- |
+   | [transform](https://www.runoob.com/cssref/css3-pr-transform.html) | 向元素应用 2D 或 3D 转换。           | 3    |
+   | [transform-origin](https://www.runoob.com/cssref/css3-pr-transform-origin.html) | 允许你改变被转换元素的位置。         | 3    |
+   | [transform-style](https://www.runoob.com/cssref/css3-pr-transform-style.html) | 规定被嵌套元素如何在 3D 空间中显示。 | 3    |
+   | [perspective](https://www.runoob.com/cssref/css3-pr-perspective.html) | 规定 3D 元素的透视效果。             | 3    |
+   | [perspective-origin](https://www.runoob.com/cssref/css3-pr-perspective-origin.html) | 规定 3D 元素的底部位置。             | 3    |
+   | [backface-visibility](https://www.runoob.com/cssref/css3-pr-backface-visibility.html) | 定义元素在不面对屏幕时是否可见。     | 3    |
+
+8. 3D 转换方法：
+
+   | 函数                                                         | 描述                                      |
+   | :----------------------------------------------------------- | :---------------------------------------- |
+   | matrix3d(*n*,*n*,*n*,*n*,*n*,*n*, *n*,*n*,*n*,*n*,*n*,*n*,*n*,*n*,*n*,*n*) | 定义 3D 转换，使用 16 个值的 4x4 矩阵。   |
+   | translate3d(*x*,*y*,*z*)                                     | 定义 3D 转化。                            |
+   | translateX(*x*)                                              | 定义 3D 转化，仅使用用于 X 轴的值。       |
+   | translateY(*y*)                                              | 定义 3D 转化，仅使用用于 Y 轴的值。       |
+   | translateZ(*z*)                                              | 定义 3D 转化，仅使用用于 Z 轴的值。       |
+   | scale3d(*x*,*y*,*z*)                                         | 定义 3D 缩放转换。                        |
+   | scaleX(*x*)                                                  | 定义 3D 缩放转换，通过给定一个 X 轴的值。 |
+   | scaleY(*y*)                                                  | 定义 3D 缩放转换，通过给定一个 Y 轴的值。 |
+   | scaleZ(*z*)                                                  | 定义 3D 缩放转换，通过给定一个 Z 轴的值。 |
+   | rotate3d(*x*,*y*,*z*,*angle*)                                | 定义 3D 旋转。                            |
+   | rotateX(*angle*)                                             | 定义沿 X 轴的 3D 旋转。                   |
+   | rotateY(*angle*)                                             | 定义沿 Y 轴的 3D 旋转。                   |
+   | rotateZ(*angle*)                                             | 定义沿 Z 轴的 3D 旋转。                   |
+   | perspective(*n*)                                             | 定义 3D 转换元素的透视视图。              |
+
+#### 3.7.2 过渡
+
+1. 通过使用 CSS3，可以给元素添加一些效果
+
+2. CSS3 过渡是元素从一种样式转换成另一种样式
+
+   - 动画效果的 CSS
+   - 动画执行的时间
+
+3. 下表列出了所有的过渡属性:
+
+   | 属性                                                         | 描述                                         | CSS  |
+   | :----------------------------------------------------------- | :------------------------------------------- | :--- |
+   | [transition](https://www.runoob.com/cssref/css3-pr-transition.html) | 简写属性，用于在一个属性中设置四个过渡属性。 | 3    |
+   | [transition-property](https://www.runoob.com/cssref/css3-pr-transition-property.html) | 规定应用过渡的 CSS 属性的名称。              | 3    |
+   | [transition-duration](https://www.runoob.com/cssref/css3-pr-transition-duration.html) | 定义过渡效果花费的时间。默认是 0。           | 3    |
+   | [transition-timing-function](https://www.runoob.com/cssref/css3-pr-transition-timing-function.html) | 规定过渡效果的时间曲线。默认是 "ease"。      | 3    |
+   | [transition-delay](https://www.runoob.com/cssref/css3-pr-transition-delay.html) | 规定过渡效果何时开始。默认是 0。             | 3    |
+
+4. 代码：
+
+   ```HTML
+   <!DOCTYPE html>
+   <html>
+   <head>
+   <meta charset="utf-8"> 
+   <title>菜鸟教程(runoob.com)</title>
+   <style> 
+   div {
+       width: 100px;
+       height: 100px;
+       background: red;
+       -webkit-transition: width 2s, height 2s, -webkit-transform 2s; /* For Safari 3.1 to 6.0 */
+       transition: width 1s, height 1s, transform 1s;
+   }
+   
+   div:hover {
+       width: 200px;
+       height: 200px;
+       -webkit-transform: rotate(360deg); /* Chrome, Safari, Opera */
+       transform: rotate(360deg);
+   }
+   </style>
+   </head>
+   <body>
+   <p><b>注意：</b>该实例无法在 Internet Explorer 9 及更早 IE 版本上工作。</p>
+   
+   <div>鼠标移动到 div 元素上，查看过渡效果。</div>
+   </body>
+   </html>
+   ```
+
+5. 表格中的数字表示支持该属性的第一个浏览器版本号。
+
+   紧跟在 -webkit-, -ms- 或 -moz- 前的数字为支持该前缀属性的第一个浏览器版本号。
+
+   | 属性                       |                   |      |                |                  |               |
+   | :------------------------- | ----------------- | ---- | -------------- | ---------------- | ------------- |
+   | transition                 | 26.0 4.0 -webkit- | 10.0 | 16.0 4.0 -moz- | 6.1 3.1 -webkit- | 12.1 10.5 -o- |
+   | transition-delay           | 26.0 4.0 -webkit- | 10.0 | 16.0 4.0 -moz- | 6.1 3.1 -webkit- | 12.1 10.5 -o- |
+   | transition-duration        | 26.0 4.0 -webkit- | 10.0 | 16.0 4.0 -moz- | 6.1 3.1 -webkit- | 12.1 10.5 -o- |
+   | transition-property        | 26.0 4.0 -webkit- | 10.0 | 16.0 4.0 -moz- | 6.1 3.1 -webkit- | 12.1 10.5 -o- |
+   | transition-timing-function | 26.0 4.0 -webkit- | 10.0 | 16.0 4.0 -moz- | 6.1 3.1 -webkit- | 12.1 10.5 -o- |
+
+#### 3.7.3 动画
+
+1. 通过 CSS3 创建动画
+
+2. CSS3 的动画需要遵循 @keyframes 规则
+
+   - 规定动画的时长
+   - 规定动画的名称
+
+3. 下面的表格列出了 @keyframes 规则和所有动画属性：
+
+   | 属性                                                         | 描述                                                         | CSS  |
+   | :----------------------------------------------------------- | :----------------------------------------------------------- | :--- |
+   | [@keyframes](https://www.runoob.com/cssref/css3-pr-animation-keyframes.html) | 规定动画。                                                   | 3    |
+   | [animation](https://www.runoob.com/cssref/css3-pr-animation.html) | 所有动画属性的简写属性，除了 animation-play-state 属性。     | 3    |
+   | [animation-name](https://www.runoob.com/cssref/css3-pr-animation-name.html) | 规定 @keyframes 动画的名称。                                 | 3    |
+   | [animation-duration](https://www.runoob.com/cssref/css3-pr-animation-duration.html) | 规定动画完成一个周期所花费的秒或毫秒。默认是 0。             | 3    |
+   | [animation-timing-function](https://www.runoob.com/cssref/css3-pr-animation-timing-function.html) | 规定动画的速度曲线。默认是 "ease"。                          | 3    |
+   | [animation-fill-mode](https://www.runoob.com/cssref/css3-pr-animation-fill-mode.html) | 规定当动画不播放时（当动画完成时，或当动画有一个延迟未开始播放时），要应用到元素的样式。 | 3    |
+   | [animation-delay](https://www.runoob.com/cssref/css3-pr-animation-delay.html) | 规定动画何时开始。默认是 0。                                 | 3    |
+   | [animation-iteration-count](https://www.runoob.com/cssref/css3-pr-animation-iteration-count.html) | 规定动画被播放的次数。默认是 1。                             | 3    |
+   | [animation-direction](https://www.runoob.com/cssref/css3-pr-animation-direction.html) | 规定动画是否在下一周期逆向地播放。默认是 "normal"。          | 3    |
+   | [animation-play-state](https://www.runoob.com/cssref/css3-pr-animation-play-state.html) | 规定动画是否正在运行或暂停。默认是 "running"。               | 3    |
+
+4. 代码：
+
+   ```HTML
+   <!DOCTYPE html>
+   <html>
+   <head>
+   <meta charset="utf-8"> 
+   <title>菜鸟教程(runoob.com)</title>
+   <style> 
+   div
+   {
+   	width:100px;
+   	height:100px;
+   	background:red;
+   	position:relative;
+   	animation-name:myfirst;
+   	animation-duration:5s;
+   	animation-timing-function:linear;
+   	animation-delay:2s;
+   	animation-iteration-count:infinite;
+   	animation-direction:alternate;
+   	animation-play-state:running;
+   	/* Safari and Chrome: */
+   	-webkit-animation-name:myfirst;
+   	-webkit-animation-duration:5s;
+   	-webkit-animation-timing-function:linear;
+   	-webkit-animation-delay:2s;
+   	-webkit-animation-iteration-count:infinite;
+   	-webkit-animation-direction:alternate;
+   	-webkit-animation-play-state:running;
+   }
+   
+   @keyframes myfirst
+   {
+   	0%   {background:red; left:0px; top:0px;}
+   	25%  {background:yellow; left:200px; top:0px;}
+   	50%  {background:blue; left:200px; top:200px;}
+   	75%  {background:green; left:0px; top:200px;}
+   	100% {background:red; left:0px; top:0px;}
+   }
+   
+   @-webkit-keyframes myfirst /* Safari and Chrome */
+   {
+   	0%   {background:red; left:0px; top:0px;}
+   	25%  {background:yellow; left:200px; top:0px;}
+   	50%  {background:blue; left:200px; top:200px;}
+   	75%  {background:green; left:0px; top:200px;}
+   	100% {background:red; left:0px; top:0px;}
+   }
+   </style>
+   </head>
+   <body>
+   
+   <p><b>注意:</b> 该实例在 Internet Explorer 9 及更早 IE 版本是无效的。</p>
+   
+   <div></div>
+   
+   </body>
+   </html>
+   ```
+
+#### 3.7.4 多列
+
+1. 在 CSS3 中，可以创建多列来对文本或者区域进行布局
+
+2. 下表列出了所有 CSS3 的多列属性：
+
+   | 属性                                                         | 描述                                     |
+   | :----------------------------------------------------------- | :--------------------------------------- |
+   | [column-count](https://www.runoob.com/cssref/css3-pr-column-count.html) | 指定元素应该被分割的列数。               |
+   | [column-fill](https://www.runoob.com/cssref/css3-pr-column-fill.html) | 指定如何填充列                           |
+   | [column-gap](https://www.runoob.com/cssref/css3-pr-column-gap.html) | 指定列与列之间的间隙                     |
+   | [column-rule](https://www.runoob.com/cssref/css3-pr-column-rule.html) | 所有 column-rule-* 属性的简写            |
+   | [column-rule-color](https://www.runoob.com/cssref/css3-pr-column-rule-color.html) | 指定两列间边框的颜色                     |
+   | [column-rule-style](https://www.runoob.com/cssref/css3-pr-column-rule-style.html) | 指定两列间边框的样式                     |
+   | [column-rule-width](https://www.runoob.com/cssref/css3-pr-column-rule-width.html) | 指定两列间边框的厚度                     |
+   | [column-span](https://www.runoob.com/cssref/css3-pr-column-span.html) | 指定元素要跨越多少列                     |
+   | [column-width](https://www.runoob.com/cssref/css3-pr-column-width.html) | 指定列的宽度                             |
+   | [columns](https://www.runoob.com/cssref/css3-pr-columns.html) | 设置 column-width 和 column-count 的简写 |
+
+#### 3.7.5 瀑布流效果
+
+1. 用多列实现
+
 ###  3.8 HTML与CSS简单页面效果实例
 
-## 4. JavaScript 基础
+1. 简单布局
+
+## 4. JavaScript 基础（跳过）
 
 ### 4.1 JavaScript基础教程
 ### 4.2 JavaScript语法详解
 ### 4.3 JavaScript函数
 ### 4.4 JavaScript异常处理和事件处理
+
+#### 4.4.1 捕获异常，自定义输出异常
+
+```JS
+// 捕获异常，自定义输出异常
+function demo() {
+	try {
+		alert(str)
+	}catch (err) {
+		alert(err)
+	}
+}
+```
+
+#### 4.4.1 事件处理
+
+- 下面是一些常见的HTML事件的列表:
+
+  | 事件        | 描述                         |
+  | :---------- | :--------------------------- |
+  | onchange    | HTML 元素改变                |
+  | onclick     | 用户点击 HTML 元素           |
+  | onmouseover | 用户在一个HTML元素上移动鼠标 |
+  | onmouseout  | 用户从一个HTML元素上移开鼠标 |
+  | onkeydown   | 用户按下键盘按键             |
+  | onload      | 浏览器已完成页面的加载       |
+
 ### 4.5 JavaScript DOM对象
+
 ### 4.6 JavaScript事件详解
 ### 4.7 JavaScript内置对象
 ### 4.8 JavaScript DOM对象控制HTML元素详解
