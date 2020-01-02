@@ -1656,9 +1656,183 @@ function demo() {
 ## 5. HTML5 新特性基础
 
 ### 5.1 HTML5音频视频
+
+#### 5.1.1 音频播放
+
+1. Audio 音频：HTML5 提供了音频播放标准
+2. control 控制器：提供添加播放、暂停和音量控件
+3. 标签：
+   - `<audio>`：定义声音
+   - `<source>`：规定多媒体资源，可以是多个
+
+#### 5.1.2 编解码工具
+
+1. FFmpeg
+2. 官方网址：www.ffmpeg.org
+3. 使用命令行控制
+
+#### 5.1.3 视频播放
+
+1. Video 视频：HTML5 视频播放标准
+
+2. control 控制器：提供添加播放、暂停和音量控件
+
+3. 标签：
+
+   - `<video>`：定义声音
+   - `<source>`：规定多媒体资源，可以是多个
+
+4. 属性：
+
+   - width：宽
+   - height：高
+
+5. 代码：例子调用了两个方法：play() 和 pause()。它同时使用了两个属性：paused 和 width
+
+   ```HTML
+   <!DOCTYPE html> 
+   <html> 
+   <head> 
+   <meta charset="utf-8"> 
+   <title>菜鸟教程(runoob.com)</title> 
+   </head>
+   <body> 
+   
+   <div style="text-align:center"> 
+     <button onclick="playPause()">播放/暂停</button> 
+     <button onclick="makeBig()">放大</button>
+     <button onclick="makeSmall()">缩小</button>
+     <button onclick="makeNormal()">普通</button>
+     <br> 
+     <video id="video1" width="420">
+       <source src="mov_bbb.mp4" type="video/mp4">
+       <source src="mov_bbb.ogg" type="video/ogg">
+       您的浏览器不支持 HTML5 video 标签。
+     </video>
+   </div> 
+   
+   <script> 
+   var myVideo=document.getElementById("video1"); 
+   
+   function playPause()
+   { 
+   	if (myVideo.paused) 
+   	  myVideo.play(); 
+   	else 
+   	  myVideo.pause(); 
+   } 
+   
+   	function makeBig()
+   { 
+   	myVideo.width=560; 
+   } 
+   
+   	function makeSmall()
+   { 
+   	myVideo.width=320; 
+   } 
+   
+   	function makeNormal()
+   { 
+   	myVideo.width=420; 
+   } 
+   </script> 
+   
+   </body> 
+   </html>
+   ```
+
 ### 5.2 HTML5拖放
+
+#### 5.2.1 拖放标签
+
+1. 拖放（Drag 和 drop）是 HTML5 标准的组成部分。
+
+2. 为了使元素可拖动，把 draggable 属性设置为 true
+
+   - `<img draggable="true">`
+   - `ev.preventDefault();` 阻止系统默认事件
+
+3. 拖动：
+
+   - ondragstart：调用了一个函数，drag(event)，规定了被拖动的数据
+   - setData()：设置被拖动数据的数据类型和值
+   - ondragover：事件规定在何处放置被拖动的数据
+   - ondrop：放置被拖动数据时发生 drop 事件
+
+4. 代码：
+
+   ```HTML
+   <!DOCTYPE html>
+   <html>
+   <head>
+   <meta charset="utf-8"> 
+   <title>菜鸟教程(runoob.com)</title>
+   <style type="text/css">
+   #div1, #div2
+   {float:left; width:100px; height:35px; margin:10px;padding:10px;border:1px solid #aaaaaa;}
+   </style>
+   <script>
+   function allowDrop(ev)
+   {
+   	ev.preventDefault();
+   }
+   
+   function drag(ev)
+   {
+   	ev.dataTransfer.setData("Text",ev.target.id);
+   }
+   
+   function drop(ev)
+   {
+   	ev.preventDefault();
+   	var data=ev.dataTransfer.getData("Text");
+   	ev.target.appendChild(document.getElementById(data));
+   }
+   </script>
+   </head>
+   <body>
+   
+   <div id="div1" ondrop="drop(event)" ondragover="allowDrop(event)">
+   	<img src="img_w3slogo.gif" draggable="true" ondragstart="drag(event)" id="drag1" width="88" height="31"></div>
+   <div id="div2" ondrop="drop(event)" ondragover="allowDrop(event)"></div>
+   
+   </body>
+   </html>
+   ```
+
+#### 5.2.2 拖放文件
+
+1. 代码：
+
+   ```HTML
+   
+   ```
+
 ### 5.3 HTML5Canvas标签
-### 5.4 HTML5Canvas应用
+
+#### 5.3.1 创建Canvas标签
+
+1. Canvas 标签：
+   - HTML5 `<canvas>` 元素用于图形的绘制，通过脚本（JS）来完成
+   - `<canvas>` 标签只是容器，必须使用脚本来绘制图形
+   - 有多种方式使用 Canvas 绘制路径、盒子、圆、字符以及添加图像
+
+#### 5.3.1 绘制图形
+
+1. `<canvas>` 标签只是容器，必须使用 JavaScript 来绘制图形
+
+2. 代码：
+
+   ```
+   
+   ```
+
+   
+
+#### 5.3.1 绘制图片
+
+### 5.4 HTML5 Canvas应用
 ### 5.5 SVG
 ### 5.6 Web储存
 ### 5.7 HTML5 应用缓存与Web Workers
