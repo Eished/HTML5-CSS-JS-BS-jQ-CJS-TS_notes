@@ -86,9 +86,9 @@
 
 
 
-1. #### 新增的标签
+#### 新增的标签
 
-#### 结构标签：
+##### 结构标签
 
 - 块状元素，有意义的 div
 
@@ -107,7 +107,7 @@
 
 - 标签嵌套级别：header / section / footer > aside / article / figure / hgroup / nav > div / figcaption
 
-#### 多媒体标签
+##### 多媒体标签
 
 - 三类媒体标签
 
@@ -122,7 +122,7 @@
 - 默认属性：`controls="controls" width="200px" autoplay="autoplay" loop="-1"`
 - 标签的意义：多媒体标签的出现意味着富媒体的发展以及支持不使用插件的情况下操作媒体文件，极大的提高可用户体验
 
-#### Web 应用标签
+##### Web 应用标签
 
 - ##### 状态标签：
 
@@ -160,7 +160,7 @@
   | `<menuitem>` | menu 命令列表标签（只有 FireFox8.0+ 支持） |
   | `<command>`  | menu 标记定义一个命令按钮（只有 IE9 支持） |
 
-#### 其它标签
+##### 其它标签
 
 - 注释标签
 
@@ -176,22 +176,140 @@
 
 - `<output>` ：定义一些输出类型，计算表单结果配合 `oninput` 事件
 
-  - 
+- `<keygen>` ：定义表单里一个生成的键值（加密信息传送）
 
+- `<time>` ：定义一个日期/事件，目前所有主流浏览器都不支持
 
+#### 删除的标签
+
+- 纯表现的元素
+  - basefont、big、center、font、s、strike、tt、u
+- 对可用性产生负面影响的元素
+  - frame、frameset、noframes
+- 产生混淆的元素
+  - acronym、applet、isindex、dir
+
+#### 重定义标签
+
+- 显示不变，表达的含义进行了重新定义的标签
+
+  | 标签       | 描述                                                        |
+  | ---------- | ----------------------------------------------------------- |
+  | `<b>`      | 代表内联文本，通常是粗体，没有传递表示重要的意思            |
+  | `<i>`      | 代表内联文本，通常是斜体，没有传递表示重要的意思            |
+  | `<dd>`     | 可以同details于figure以前使用，定义包含文本，dialog也可以用 |
+  | `<dt>`     | 可以同details于figure以前使用，汇总细节，dialog也可以用     |
+  | `<hr>`     | 表示主题结束，而不是水平线，虽然显示相同                    |
+  | `<menu>`   | 重新定义用户界面菜单，配合commond或者menitem使用            |
+  | `<small>`  | 表示小字体，例如打印注释或者法律条款                        |
+  | `<strong>` | 表示重要性而不是强调符号                                    |
+
+  
 
 ### 第2课 HTML5网页布局
 
 		HTML5网页布局
 		传统布局与HTML5网页布局的区别和意义，通过案例讲解如何使用HTML5搭建网页
+#### 传统布局与HTML5布局
 
+<img src="E:\web\学习笔记\HTML5+CSS+JS+Bootstrap+jQuery+CreateJS+TypeScript+实战系列视频_notes\HTML5-imooc.assets\20200104215508.png"/>
+
+![](E:\web\学习笔记\HTML5+CSS+JS+Bootstrap+jQuery+CreateJS+TypeScript+实战系列视频_notes\HTML5-imooc.assets\20200104215554.png)
+
+#### 新布局的意义
+
+- 语义化
+  - HTML5 可以让更语义化的结构化代码标签代替大量的无意义的 div 标签
+    - 这种语义化特性提升了网页的质量和语义
+    - 减少了以前用于 CSS 调用的 class 和 id 属性
+  - 对搜索引擎更友好
+    - 新的架构标签带来的是网页布局的改变，即提升搜索引擎的友好
+
+#### HTML5 慕课网布局
+
+- 代码：
+
+  ```
+  
+  ```
+
+  
 
 ### 第3课 HTML5属性变化
 
 		HTML5属性变化
 		了解这些属性带来的好处，加深对标签的认识，将提高以后的开发效率
 		input、表单属性、链接属性、其它属性 
+#### input 属性
 
+- email 、url、number、tel ：手机端输入法有效果
+- Date picker 类型：
+  - Date：选取日、月、年
+  - Mouth：选取月、年
+  - Week：选取周、年
+  - Time：选取时间（小时、分钟）
+  - Datetime：选取时间、日、月、年（utc时间），safari opera兼容
+  - Datetime-local：选取使时间、日、月、年（本地时间）chrome safari opera兼容
+- range 类型：取值范围，`<input type="range" name="range" min="1" max="10">`
+- search 类型：带清空的输入框，`<input type="search" name="search">`
+- color 类型：取色器，`<input type="color" name="color">`
+
+#### 表单属性
+
+- autocomplete 属性：
+  - `form` 或 `input` 域应该拥有自动完成功能
+  - `<form autocomplete="on"></form> `
+  - autocomplete 适用于 `<form>` 标签，以及以下类型的 `<input>` 标签：
+    - text、search、url、telephone、email、password、datepickers、range、color
+- `autofocus="autofocus"` 属性：
+  - 页面加载时，域自动获得焦点
+  - `<input type="text autofocus="autofocus">`
+  - 适用于所有 input 标签
+- multiple 属性：
+  - 规定输入域中可以选择多个值
+  - `<input type="text multiple="multiple">`
+  - 适用于email、file类型 input标签
+- placeholder 属性：
+  - 提供一种提示（hint），描述输入域所期待的值
+  - `<input type="search" placeholder="Search Content"`
+  - 适用于 input 标签 type 属性为：
+    - text、search、url、telephone、email、password
+- required 属性：
+  - 规定必须在提交之前填写输入域（不能为空）
+  - `<input type="text" required="required">`
+  - 适用于 input 标签 type 属性为：
+    - text、search、url、telephone、email、password、date pinckers、number、checkbox、radio、file
+
+#### 链接属性
+
+- `<link>` 的 `sizes` 属性：
+  - `<link rel="icon" href="icon.gif" type="image/gif" sizes="16x16">`
+- `<base>` 的 `target` 属性 ：
+  - `<base href="http://localhost/" target="_blank">`
+- 超链接`<a>` 属性：
+  - `a:meida=""`：表示对设备进行优化，`handhelp` 对手持设备支持，`tv` 对电视设备支持
+  - `a:hreflang="zh"`：设置语言，这里表示中文
+  - `a:rel="external"`：设置超链接的引用，这里表示外部链接
+
+#### 其它属性
+
+- script 标签
+  - defer：加载完脚本后并不执行，而是等整个页面加载完之后再执行
+    - `<script defer src="url"></script>`
+    - 原来只兼容IE，现在已经兼容所有浏览器
+  - async：加载完脚本后立即执行，不用等整个页面加载完，属于异步执行
+    - `<script async src="url"></script>`
+    - 兼容所有浏览器
+- ol 标签
+  - Start：有序列表起始位置
+  - Reserved：有序列表倒叙
+- html 标签
+  - manifest=”cache.manifest" 
+    - 定义页面离线应用文件
+    - `<html manifest="cache.manifest"`
+- style 标签
+  - scoped：内嵌 CSS
+  - `<style scoped> </style>`
 
 ### 第4课 HTML5展望
 
@@ -199,11 +317,30 @@
 		HTML5快速发展，它还有哪些强大的功能，在什么领域可以使用，以及它的发展方向
 		简述Api、简述Canvas、移动端应用
 
+#### 简述Api
+
+API（Application Programming Interface）：应用程序编程接口
+
+- Video-API
+  - 六个方法
+  - 三十个属性
+  - 二十二歌事件
+
+#### 简述Canvas
+
+- 什么是Canvas ？
+  - Canvas 元素用于在网页上绘制图形
+  - Canvas 元素使用 JavaScript 在网页上绘制图像
+  - 画布是一个矩形区域，可以通过API 控制其中每一个像素
+
+#### 移动端应用
+
 
 
 ##	步骤2: 搞懂CSS3
 
-	本阶段内容主要涵盖CSS3选择器、边框、圆角、背景、渐变、转换、过渡、动画等知识。通过本阶段学习，大家将能够更加准确的控制页面的布局等样式效果，实现非常炫酷的CSS3动画特效，让网页丰富多彩。
+	本阶段内容主要涵盖CSS3选择器、边框、圆角、背景、渐变、转换、过渡、动画等知识。
+	通过本阶段学习，大家将能够更加准确的控制页面的布局等样式效果，实现非常炫酷的CSS3动画特效，让网页丰富多彩。
 
 
 ### 第1课 CSS3选择器
@@ -251,7 +388,8 @@
 
 ## 步骤3: JavaScript基础
 
-	本阶段内容主要涵盖js基础语法、流程控制语句、函数、内置对象、DOM基础和事件、BOM基础等知识。通过本阶段学习，大家不仅可以掌握js的基础知识，还能学会网站开发中常用的图片轮播特效。
+	本阶段内容主要涵盖js基础语法、流程控制语句、函数、内置对象、DOM基础和事件、BOM基础等知识。
+	通过本阶段学习，大家不仅可以掌握js的基础知识，还能学会网站开发中常用的图片轮播特效。
 
 
 ### 第1课 语法
