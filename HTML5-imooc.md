@@ -380,6 +380,250 @@ HTML5 适合开发哪些应用？
 - 新增基本选择器
   - 子元素选择器、相邻兄弟元素选择器、通用兄弟选择器、群组选择器
 
+#### 子元素选择器
+
+- 概念：直接后代选择器
+  - 子元素选择器只能选择某些元素的子元素
+- 语法：
+  - 父元素 > 子元素 （Father > Children）
+- 兼容性：
+  - IE8+、FireFox、Chrome、Safari、Opera
+
+#### 相邻兄弟元素选择器
+
+- 概念
+  - 相邻兄弟元素选择器可以选择紧接在另一元素后的元素，且它们具有相同父元素
+- 语法：
+  - 元素 + 相邻兄弟元素 (Element + Sibling )
+- 兼容性
+  - IE8+、FireFox、Chrome、Safari、Opera
+
+#### 通用兄弟选择器
+
+- 概念
+  - 选择元素**后面的所有**兄弟元素，且它们具有相同父元素
+- 语法：
+  - 元素 ~ 相邻兄弟元素 (Element ~ Sibling )
+- 兼容性
+  - IE8+、FireFox、Chrome、Safari、Opera
+
+#### 群组选择器
+
+- 概念
+  - 群组选择器是将具有相同样式的元素分组在一起，每个选择器之间使用逗号 "," 隔开
+- 语法：
+  - 元素1, 元素2, ..., 元素n { Element1, Element2, ..., Elementn}
+- 兼容性
+  - IE6+、FireFox、Chrome、Safari、Opera
+
+#### 属性选择器
+
+- 对带有指定属性的HTML 元素设置样式
+
+  - 使用CSS3 属性选择器，你可以只指定元素的某个属性，或者同时指定元素的某个属性和其对应的属性值
+
+- ##### Element[attribute]
+
+  - 概念
+    - 为带有 attribute 属性的 Element 元素设置样式
+  - 兼容性
+    - IE8+、FireFox、Chrome、Safari、Opera
+
+- ##### Element[attribute = "value"]
+
+  - 概念
+    - 为带有 attribute = "value" 属性的 Element 元素设置样式
+  - 兼容性
+    - IE8+、FireFox、Chrome、Safari、Opera
+
+- ##### Element[attribute ~= "value"]
+
+  - 概念
+    - 为 attribute 属性**包含**单词 "value" 的 Element 元素设置样式
+  - 兼容性
+    - IE8+、FireFox、Chrome、Safari、Opera
+
+- ##### Element[attribute ^= "value"]
+
+  - 概念
+    - 为 attribute 属性值以 "value" **开头**的所有 Element 元素设置样式
+  - 兼容性
+    - IE8+、FireFox、Chrome、Safari、Opera
+
+- ##### Element[attribute $= "value"]
+
+  - 概念
+    - 为 attribute 属性值以 "value" **结尾**的所有 Element 元素设置样式
+  - 兼容性
+    - IE8+、FireFox、Chrome、Safari、Opera
+
+- ##### Element[attribute *= "value"]
+
+  - 概念：**常用**
+    - 为 attribute 属性值包含 "value" 的所有 Element 元素设置样式
+  - 兼容性
+    - IE8+、FireFox、Chrome、Safari、Opera
+
+- ##### Element[attribute |= "value"]
+
+  - 概念：**常用**
+    - 为 attribute 属性值以 "value" 或以 "-value" 开头的所有 Element 元素设置样式
+  - 兼容性
+    - IE8+、FireFox、Chrome、Safari、Opera
+
+#### 伪类选择器
+
+##### 动态伪类
+
+- 动态伪类
+  - 这些伪类不存在于HTML中，只有当用户和网站交互的时候才能体现出来
+- 锚点伪类
+  - `:link`, `:visited`
+- 用户行为伪类
+  - `:hover`, `:active`, `:focus`
+
+##### UI元素状态伪类
+
+- 概念
+  - `:enabled`, `:disabled`, `:checked` 伪类称为 UI 状态伪类
+- 兼容性
+  - IE9+、FireFox、Chrome、Safari、Opera(`:checked`只兼容Op)
+
+##### CSS3结构类
+
+- CSS3的 `:nth` 选择器
+  - 我们把 CSS3 的 `:nth` 选择器也称为CSS3结构类
+- **选择方法：**
+  - `:first-child` `:last-child` `:nth-child()` `:nth-last-child()` `:nth-of-type()` `:nth-last-of-type()` `:first-of-type` `:last-of-type` `:only-child` `:only-of-type` `:empty`
+- `Element:first-child`
+  - 概念
+    - 选择属于其父元素的首个子元素的每个 Element 元素
+  - 兼容性：
+    - IE8+、FireFox、Chrome、Safari、Opera
+- `Element:last-child`
+  - 概念
+    - 选择属于其父元素的最后一个子元素的 Element 元素
+  - 兼容性：
+    - IE8+、FireFox4+、Chrome、Safari、Opera
+- `Element:nth-child(N)`
+  - 概念
+    - 选择属于其父元素的第 N 个子元素，不论元素类型
+  - 兼容性：
+    - IE9+、FireFox4+、Chrome、Safari、Opera
+- **关于参数(N)**
+  - `Element:nth-child(Number)` ：
+    - 选择属于其父元素的第 Number 个子元素
+  - `Element:nth-child(n)` ：
+    - **n 是一个简单表达式**，取值从 "0" 开始计算。这里只能是 "n" ，不能用其它字母代替
+    - `Element:nth-child(2n+1)`
+      - 奇数隔行选择
+  - `Element:nth-child(odd)`  `Element:nth-child(even)`：
+    - odd 和 even 可用于匹配下表是奇数或偶数的Element元素的关键词（第一个下标是1）
+- `:nth-last-child(N)`
+  - 概念
+    - 选择属于其元素的第 N 个子元素的**每个元素**的类型，不论元素的类型，从最后一个子元素开始计数
+  - 兼容性：
+    - IE9+、FireFox4+、Chrome、Safari、Opera
+- `:nth-of-type(N)`
+  - 概念
+    - 选择器匹配属于父元素的**特定类型**的第 N 个子元素的每个元素
+  - 兼容性：
+    - IE9+、FireFox4+、Chrome、Safari、Opera
+- `:nth-last-of-type(N)`
+  - 概念
+    - 选择器匹配属于父元素的**特定类型**的第 N 个子元素的每个元，,从最后一个子元素开始计数
+  - 兼容性：
+    - IE9+、FireFox4+、Chrome、Safari、Opera
+- `:first-of-type`
+  - 概念
+    - 选择器匹配属于其父元素的特定类型的首个子元素的每个元素
+  - 兼容性
+    - IE9+、FireFox、Chrome、Safari、Opera
+- `:last-of-type`
+  - 概念
+    - 选择器匹配属于其父元素的特定类型的最后一个子元素的每个元素
+  - 兼容性
+    - IE9+、FireFox、Chrome、Safari、Opera
+- `:only-child`
+  - 概念
+    - 选择器匹配属于其父元素的子元素的每个元素
+  - 兼容性
+    - IE9+、FireFox、Chrome、Safari、Opera
+- `:only-child-type`
+  - 概念
+    - 选择器匹配属于其父元素的忒的那个类型的子元素的每个元素
+  - 兼容性
+    - IE9+、FireFox4+、Chrome、Safari、Opera
+- `:empty`
+  - 概念
+    - 选择器匹配没有子元素（包括文本节点）的每个元素
+  - 兼容性
+    - IE9+、FireFox、Chrome、Safari、Opera
+
+##### 否定伪类
+
+- 否定选择器 `:not`
+  - 概念
+    - `:not(Element/ selector)` 选择器匹配非指定元素/选择器的每个元素
+  - 语法
+    - 父元素:not(子元素/子选择器)  ( Father:not(Children/selector) )
+  - 兼容性
+    - IE9+、FireFox、Chrome、Safari、Opera
+
+##### 伪元素
+
+- CSS 伪元素用于向某些选择器设置特殊效果
+  - 语法
+    - 元素::伪元素    ( Element::pseudo-element )
+    - "::" 是为了区分伪类，单:也可以用
+  - 兼容性
+    - IE9+、FireFox、Chrome、Safari、Opera
+- `Element::first-line`
+  - 概念
+    - 根据 "first-line" 伪元素中的样式对 Element 元素的第一行文本进行格式化
+  - 说明
+    - "first-line" 伪元素只能用于块级元素
+- `Element::first-letter`
+  - 概念
+    - 用于向文本的首字母设置特殊样式
+  - 说明
+    - "first-letter" 伪元素只能用于块级元素
+- `Element::before`
+  - 概念
+    - 在元素的内容前面插入新内容
+  - 说明
+    - 常用 "content" 配合使用
+    - 行级元素
+    - 标签中找不到对应的标签，无法选择
+- `Element::after`
+  - 概念
+    - 在元素的内容后面插入新内容
+  - 说明
+    - 常用 "content"， 多用于清除浮动
+    - 行级元素
+    - 标签中找不到对应的标签，无法选择
+- `Element::selection`
+  - 概念
+    - 用于设置在浏览器中选中文本后代背景色与前景色
+  - 兼容性
+    - IE9+、FireFox加前缀、Chrome、Safari、Opera
+
+#### CSS权重
+
+- 什么是权重
+  - 当很多规则别应用到某一个元素上时，权重是决定哪种规则生效、或者优先级的过程
+- 权重等级与权值
+  - 行内样式(1000) > ID 选择器(100) > **类、属性、伪类选择器(10)** > 元素和伪元素(1) > *(0)
+- 权重计算口诀
+  - 从0开始，一个行内样式 +1000，一个ID+100，一个属性、class、伪类+10，一个元素名、伪元素+1
+- 包含更高权重选择器的一条规则拥有更高的权重
+- ID选择器（#idValue）的权重比属性选择器（[id="idValue"]）高
+- 带有上下文关系的选择器比单纯的元素选择器权重要高
+- 离元素更近的规则生效
+- 最后定义的这条规则会覆盖上面与之冲突的规则
+- 无论多少个元素组成的选择器，都没有一个 class 选择器权重高
+- 通配符选择器权重是0，被继承的CSS属性也带有权重，权重也是0
+
 ### 第2课 CSS3边框与圆角
 
 		CSS3边框与圆角
