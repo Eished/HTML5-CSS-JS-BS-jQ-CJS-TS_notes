@@ -791,11 +791,356 @@ HTML5 适合开发哪些应用？
 		CSS3转换
 		深入讲解元素如何扭曲、移位或旋转，让我们可以更自由得装饰和变形HTML组件
 
+#### CSS3 Transform
+
+##### CSS3 的变形（Transform）属性
+
+- 让元素在一个坐标系中变形。这个属性包含一系列变形函数，可以移动、旋转和缩放元素。
+- 语法：
+  - `transform : none |<transform-funciton> [<transform-function>]*;`
+- 默认值：
+  - transform: none;
+- 兼容性：
+  - IE12+、FireFox16+、Chrome36+、Safari16+、Opera23+
+
+#### CSS3 2D转换
+
+##### rotate() 旋转
+
+- 通过指定角度参数对原元素指定一个2D rotation（2D 旋转）
+- 语法
+  - `transform: rotate(<angle>);`
+- 参数说明
+  - angle 指旋转角度，正数表示顺时针旋转，负数表示逆时针旋转
+
+##### translate() 平移
+
+- 根据左（X轴）和顶部（Y轴）位置给定的参数，从当前元素位置移动
+- 三种情况
+  - translateX(x) 仅水平移动（X轴移动）
+  - translateY(y) 仅垂直移动（Y轴移动）
+  - translate(x, y) 水平和垂直方向同时移动（X轴Y轴同时移动）
+- `translateX(<translation-value>);`
+  - 语法：X轴移动
+    - `transform:translateX(<translation-value>);`
+- `translateY(<translation-value>);`
+  - 语法：Y轴移动
+    - `transform:translateY(<translation-value>);`
+- `transform:translate(<translation-value>[,<translation-value>]);`
+  - X轴Y轴同时移动
+
+##### scale() 缩放
+
+- 指定对象的2D scale（2D缩放）
+- 三种情况
+  - scaleX(x) 仅水平缩放（X轴缩放）
+  - scaleY(y) 仅垂直缩放（Y轴缩放）
+  - scale(x, y) 水平和垂直方向同时缩放（X轴Y轴同时缩放）
+- `scaleX(<number>)`
+  - 使用 [sx, 1] 缩放矢量执行缩放操作，sx 为所需参数
+  - 语法
+    - `transform: scaleX(<number>);`
+- `scaleY(<number>)`
+  - 使用 [sy, 1] 缩放矢量执行缩放操作，sy 为所需参数
+  - 语法
+    - `transform: scaleY(<number>);`
+- `scale(<number>[, <number>])`
+  - 使用 [sx, sy] 缩放矢量的两个参数指定一个 2D scale（2D缩放）
+  - 语法
+    - `transform: scale(<number>[, <number>]);`
+
+##### skew() 扭曲或斜切
+
+- 指定对象skew transformation（斜切扭曲）
+- 三种情况
+  - skewX(x) 仅水平扭曲变形（X轴扭曲变形）
+  - skewY(y) 仅垂直扭曲变形（Y轴扭曲变形）
+  - skew(x, y) 水平和垂直方向同时扭曲变形（X轴Y轴同时扭曲变形）
+- `skewX(<angle>)`
+  - 水平斜切变换（X轴扭曲变形）
+  - 语法
+    - `transform: skewX(<angle>);`
+- `skewY(<angle>)`
+  - 垂直斜切变换（Y轴扭曲变形）
+  - 语法
+    - `transform: skewY(<angle>);`
+- `skew(<angle>[,<angle>])`
+  - skew(x, y) 水平和垂直方向同时斜切变换（X轴Y轴同时扭曲变形）
+  - 语法
+    - `transform: skew(<angle>[,<angle>]);`
+
+##### matrix() 矩阵或混合
+
+- 以一个含六个值的(a,b,c,d,e,f) 变换矩阵的形式指定一个2D变换
+- 相当于直接应用一个[a,b,c,d,e,f] 变换矩阵
+- 语法
+  - `transform: matrix(a, c, b, d, tx, ty);`
+- 参数说明
+  - tx, ty 就是基于X和Y坐标重新定位元素
+
+#### CSS3 3D转换
+
+##### rotate3d()
+
+- 旋转rotateX
+  - 指定对象在X轴上的旋转角度
+  - 语法
+    - `transform: rotateX(angle);`
+- 旋转rotateY
+  - 指定对象在Y轴上的旋转角度
+  - 语法
+    - `transform: rotateY(angle);`
+- 旋转rotateZ
+  - 指定对象在Z轴上的旋转角度
+  - 语法
+    - `transform: rotateZ(angle);`
+- 旋转rotate3d
+  - 指定对象在X轴上的旋转角度
+  - 语法
+    - `transform: rotateX(x, y, z, angle);`
+  - 参数说明
+    - 前三个参数分别表示方向，第四个表示旋转的角度，参数不允许省略
+    - x,y,z 取值0~1 可以为小数0.01
+
+##### translate3d()
+
+- 移动 translateZ
+  - 指定对象Z轴的平移
+  - 语法
+    - `transform: translateZ(z);`
+  - 参数说明
+    - 参数对应Z轴，不能省略
+- 移动 translate3d
+  - 指定对象的3d位移
+  - 语法
+    - `transform: translate3d(x, y, z);`
+  - 参数说明
+    - 参数对应X,Y,Z轴，不能省略
+
+##### scale3d()
+
+- 缩放 scaleZ
+  - 指定对象的z 轴缩放
+  - 语法
+    - `transform: scaleZ(z);`
+  - 参数说明
+    - 参数对应Z轴，参数不能省略
+- 缩放 scale3d
+  - 指定对象的3d缩放
+  - 语法
+    - `transform: scale3d(x, y, z);`
+  - 参数说明
+    - 参数对应X,Y,Z轴，不能省略
+
+##### matrix3d()
+
+- 矩阵 matrix3d
+  - 以一个4x4矩阵的形式指定一个3D变换
+  - 语法
+    - `transform: matrix3d(sx, n,n,n,n, sy, n,n,n,n, sz, n,n,n,n, 1);`
+  - 参数说明
+    - 使用 16个值得 4x4 矩阵
+
+#### CSS3 Transform与坐标系统
+
+- transform-origin 属性
+  - 更改转换元素的位置(原点)
+  - 语法
+    - `transform-origin: x-axis y-axis z-axis;`
+
+#### CSS3 矩阵
+
+- 矩阵的概念
+  - 矩阵可以理解为方阵，方阵中站的是人，矩阵中是数值。所谓的矩阵计算就是两个方针的人相互冲杀。
+- CSS3 中的矩阵
+  - CSS3 中的矩阵指的是一个方法，书写为 matrix() 和 matrix3d()；
+  - matrix 是元素2D平面的移动变换（transform），2D变换矩阵为 3x3；
+  - matrix3d 是元素3D 移动变换（transform），3D变换矩阵为 4x4；
+
+##### 矩阵matrix
+
+- `transform: matrix(a, c, d, tx, ty);`
+  - 注意书写方向是竖直方向
+- 转换公式
+  - x, y 表示转换元素的所有坐标
+- 目标矩阵说明
+  - `ax + cy + e` 为变换后的水平坐标，`bx + dy + f` 表示变换后的垂直位置
+
+![image-20200106150408525](E:\web\学习笔记\HTML5+CSS+JS+Bootstrap+jQuery+CreateJS+TypeScript+实战系列视频_notes\HTML5-imooc.assets\image-20200106150408525.png)
+
+##### 矩阵matrix 举例
+
+- ```css
+  transform: matrix(1, 0, 0, 1, 30, 30); /* a=1, b=0, c=0, e=30, f=30 */
+  根据这个矩阵偏移元素的中心点
+  假设是(0, 0)，即 x=0, y=0;
+  变换后，
+  x = ax + cy + e = 1*0 + 0*0 + 30 = 30;
+  y = bx + dy + f = 0*0 + 0*1 + 30 = 30;
+  
+  于是，整个元素的中心点从(0,0) 变成了(30,30)
+  整个元素就发生了平移
+  ```
+
+- 说明
+
+  - ```css
+    transform: matrix(1, 0, 0, 1, 30, 30); 
+    等同于 transform: translate(x,y);
+    ```
+
+- 注意
+
+  - matrix 在 FF 浏览器下需要添加单位，webkit 内核默认px，translate 等方法需要加单位
+
+##### 矩阵matrix缩放(scale)
+
+- ```css
+  matrix(sx,0,0,sy,0,0) 等同于 scale(sx,sy)
+  ```
+
+##### 矩阵matrix旋转(rotate)
+
+- ```css
+  matrix(cosθ,sinθ,-sinθ,cosθ,0,0) 等同于 rotate(θdeg)
+  ```
+
+##### 矩阵matrix拉伸(skew)
+
+- ```css
+  matrix(1,tanθy,tanθx,1,0,0) 等同于 skew(θxdeg,θydeg)
+  ```
+
+##### 矩阵matrix镜像对称效果
+
+- ```css
+  matrix((1-k*k)/(1+k*k),2k/(1+k*k),2K/(1+k*k),(k*k-1)/(1+k*k),0,0)
+  ```
+
+  对称轴一定通过元素变换的中心点，k是对称轴的斜率
+
+  ![image-20200106154232828](E:\web\学习笔记\HTML5+CSS+JS+Bootstrap+jQuery+CreateJS+TypeScript+实战系列视频_notes\HTML5-imooc.assets\image-20200106154232828.png)
+
+##### 3D变换中的矩阵
+
+- 从二维变到三维，是从 4到 9；而在矩阵里头是从 3\*3 变成 4\*4
+
+- 例子：
+
+  ```css
+  transform: matrix3d(sx,0,0,0,0,sy,0,0,0,0,sz,0,0,0,0,1)
+  ```
+
+  ![image-20200106155507645](E:\web\学习笔记\HTML5+CSS+JS+Bootstrap+jQuery+CreateJS+TypeScript+实战系列视频_notes\HTML5-imooc.assets\image-20200106155507645.png)
+
+#### CSS3 扩展属性
+
+##### transform-style属性
+
+- 指定嵌套元素是怎么样在三维空间中呈现
+
+- 语法
+  - `transform-style: flat|preserve-3d;`
+- 默认值
+  - `transform-style: flat;`
+
+##### perspective属性
+
+- 指定观察者与 [z=0] 平面的距离，使具有三维位置变换的元素产生透视效果
+- 语法
+  - `perspective: number|none; `
+- 默认值
+  - `perspective: number|none;`
+
+##### perspective-origin属性
+
+- 指定透视点的位置
+- 语法
+  - `perspective-origin: x-axis y-axis; `
+- 默认值
+  - `perspective: 50% 50%;`
+
+##### backface-visibility属性
+
+- 指定元素背面面向用户时是否可见
+- 语法
+  - `backface-visibility: visible|hidden; `
+- 默认值
+  - `perspective: visible;`
 
 ### 第5课 CSS3过渡
 
 		CSS3过渡
 		一起探索如何通过CSS3属性值的变化实现动画效果，如何触发这些动画产生交互
+
+#### 过渡（Transition）
+
+- 允许CSS的属性值在一定事件区间内平滑的变化
+- 在鼠标点击、获得焦点、被点击或对元素任何改变中触发，并圆滑的以动画效果改变CSS的属性值
+- 兼容性
+  - IE10+、FireFox16+、Chrome26+、Safari6.1+、Opera12.1+
+
+#### transform-property属性
+
+- 检索或设置对象中的参与过渡的属性
+- 语法
+  - `transform-property:none|all|"property";`
+- 参数说明
+  - none（没有属性改变）
+  - all （所有属性改变）
+  - "property"（元素属性名）
+- 默认所有属性过渡
+
+#### transition-furation属性
+
+- 检索或设置对象过渡的持续时间
+- 语法
+  - `transition-duration:time;`
+- 参数说明
+  - 规定完成过渡效果需要花费的时间（以秒或毫秒计算）
+  - 默认值 0
+
+#### transition-timing-function属性
+
+- 检索或设置对象中过渡的动画类型
+
+- 语法
+
+  - ```css
+    transition-timing-funxtion:ease|linear|ease-in|oase-out|ease-in-out|step-start|step-end|steps(<integer>[,[start|end]]?)|cubic-bezier(<number>,<number>,<number>,<number>);	
+    ```
+
+- 参数说明
+
+  - linear：线性过渡。等同于贝塞尔曲线(0.0, 0.0, 1.0, 1.0)
+  - ease：平滑过渡。等同于贝塞尔曲线(0.25, 0.1, 0.25, 1.0)
+  - ease-in：由慢到快。等同于贝塞尔曲线(0.41, 0, 1.0, 1.0)
+  - ease-out：由快到慢。等同于贝塞尔曲线(0, 0, 0.58, 1.0)
+  - ease-in-out：由慢到快再到慢。等同于贝塞尔曲线(0.42, 0, 0.58, 1.0)
+  - step-start：等同于 steps(1, start)
+  - step-end：等同于 steps(1, end)
+  - steps(<integer>[,[start|end]]?)：接受两个参数的步进函数
+    - 第一个参数：必须为正整数，指定函数的步数
+    - 第二个参数：取值可能是start或end，指定每一步的值发生变化的时间点
+    - 第二个参数：可选，默认值为end
+  - cubic-bezier(<number>,<number>,<number>,<number>);
+    - 特定的贝塞尔曲线类型，4个数值需在[0,1] 区间内
+
+#### transition-delay属性
+
+- 检索或设置对象延迟过渡的时间
+- 语法
+  - `transition-delay:time;`
+- 参数说明
+  - 指定秒或毫秒之前要等待切换效果开始
+  - 默认值 0
+
+#### transition属性
+
+- **复合属性**检索或设置对象变换时的过渡
+- 语法
+  - `transition: property duration timing-function delay;`
+
 
 
 ### 第6课 CSS3动画
