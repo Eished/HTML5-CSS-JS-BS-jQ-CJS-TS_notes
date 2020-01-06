@@ -1119,11 +1119,11 @@ HTML5 适合开发哪些应用？
   - ease-in-out：由慢到快再到慢。等同于贝塞尔曲线(0.42, 0, 0.58, 1.0)
   - step-start：等同于 steps(1, start)
   - step-end：等同于 steps(1, end)
-  - steps(<integer>[,[start|end]]?)：接受两个参数的步进函数
+  - `steps(<integer>[,[start|end]]?)`：接受两个参数的步进函数
     - 第一个参数：必须为正整数，指定函数的步数
     - 第二个参数：取值可能是start或end，指定每一步的值发生变化的时间点
     - 第二个参数：可选，默认值为end
-  - cubic-bezier(<number>,<number>,<number>,<number>);
+  - `cubic-bezier(<number>,<number>,<number>,<number>);`
     - 特定的贝塞尔曲线类型，4个数值需在[0,1] 区间内
 
 #### transition-delay属性
@@ -1148,6 +1148,197 @@ HTML5 适合开发哪些应用？
 		CSS3动画
 		使用animation属性，实现以往要用Flash等动画软件才能完成的炫酷效果
 
+#### CSS3动画(animation)
+
+- 动画(animation)
+  - anima：灵魂
+  - animate：赋予生命
+  - 动画可以定义为使用绘画手法，创造生命运动的艺术
+- 视觉暂留原理
+  - 人类具有”视觉暂留“ 的特性，人的眼睛看到一幅画或一个物体后，再0.34秒内不会消失。
+- 动画原理
+  - 通过把人物的表情、动作、变化等分解后画成许多动作瞬间的画面，利用视觉暂留的原理，再上一幅画还没消失前播放下一幅画，就会给人造成一种流畅的视觉变化效果。
+- 兼容性
+  - IE10+、FireFox16+、Chrome43+、Safari9+、Opera30+、Android(-webkit-)
+- CSS 动画
+  - 使元素从一种样式逐渐变化称为另一种样式的效果
+
+#### CSS3 animation
+
+##### animation-name属性
+
+- 检索或设置对象所应用的动画名称
+- 语法
+  - `animation-naem:keyframename|none;`
+- 参数说明
+  - keyframename：指定要绑定到选择器的关键帧的名称
+  - none：指定没有动画（可用于覆盖从级联的动画）
+
+##### animation-duration属性
+
+- 检索或设置对象动画的持续时间
+- 语法
+  - `animation-duration:time;`
+- 参数说明
+  - time 指定动画播放完成花费的时间。默认值为 0，意味着没有动画效果
+
+##### animation-timing-function属性
+
+- 检索或设置对象动画的过渡类型
+
+- 语法
+
+  - ```css
+    animation-timing-funxtion:ease|linear|ease-in|oase-out|ease-in-out|step-start|step-end|steps(<integer>[,[start|end]]?)|cubic-bezier(<number>,<number>,<number>,<number>);	
+    ```
+
+- 参数说明
+
+  - linear：线性过渡。等同于贝塞尔曲线(0.0, 0.0, 1.0, 1.0)
+  - ease：平滑过渡。等同于贝塞尔曲线(0.25, 0.1, 0.25, 1.0)
+  - ease-in：由慢到快。等同于贝塞尔曲线(0.41, 0, 1.0, 1.0)
+  - ease-out：由快到慢。等同于贝塞尔曲线(0, 0, 0.58, 1.0)
+  - ease-in-out：由慢到快再到慢。等同于贝塞尔曲线(0.42, 0, 0.58, 1.0)
+  - step-start：等同于 steps(1, start)
+  - step-end：等同于 steps(1, end)
+  - `steps(<integer>[,[start|end]]?)`：接受两个参数的步进函数
+    - 第一个参数：必须为正整数，指定函数的步数
+    - 第二个参数：取值可能是 start或 end，指定每一步的值发生变化的时间点
+    - 第二个参数：可选，默认值为 end
+  - `cubic-bezier(<number>,<number>,<number>,<number>);`
+    - 特定的贝塞尔曲线类型，4个数值需在[0,1] 区间内
+
+##### animation-delay属性
+
+- 检索或设置对象动画的延迟时间
+- 语法
+  - `animation-delay:time;`
+- 参数说明
+  - 可选，定义动画开始前等待的时间。
+  - 默认值 0
+
+##### animation-iteration-count属性
+
+- 检索或设置对象动画的循环次数
+- 语法
+  - `animation-iteration-count:infinite|<number>;`
+- 参数说明
+  - `<number>`为数字，其默认值为 "1" ；infinite 为无限次数循环。
+
+##### animation-direction属性
+
+- 检索或设置对象动画再循环中是否反方向运动
+- 语法
+  - `animation-direction:normal|reverse|alternate|alternate-reverse|initial|inherit;`
+- 参数说明
+  - normal：正常方向；
+  - reverse：反方向运行；
+  - alternate：动画先正常运行再反方向运行，并持续交替运行；
+  - alternate-reverse：动画先反方向运行再正方向运行，并持续交替运行。
+
+##### animation-fill-mode属性
+
+- 规定动画不播放时（当动画完成播放或当动画有延迟未开始播放时），要应用到元素的样式。
+- 语法
+  - `animation-fill-mode:none|forwards|backwards|both|initial|inherit;`
+  - 参数说明
+    - none：默认值。不设置对象动画之外的状态；
+    - forwards：设置对象状态为动画开始时的状态；
+    - backwards：设置对象状态为动画开始时的状态；
+    - both：设置对象状态为动画结束或开始的状态。
+
+##### animation-play-state属性
+
+- 指定动画是否正在运行或已暂停
+- 语法
+  - `animation-play-state:paused|running;`
+- 参数说明
+  - paused：指定暂停动画；
+  - running：默认值，指定正在运行的动画。
+
+##### animation属性
+
+- 复合属性。检索或设置对象所应用的动画特效。
+
+- 语法：优先识别 name duration
+
+  - ```css
+    animation:name duration timing-function delay iteration-count direction fill-mode plat-state;
+    ```
+
+#### CSS3 @keyframes
+
+- Keyframes定义
+
+  - 关键帧，可以指定任何顺序排列来决定Animation动画变化的关键位置
+
+- 使用说明
+
+  - 使用@keyframes规则创建动画，通过逐步改变从一个CSS样式设定到另一个。
+  - 再动画过程中可以通过@keyframes规则多词更改CSS样式的设定。
+
+- 语法
+
+  - ```css
+    @keyframse animationname { 
+      keyframes-selector{
+     		css-style;   
+      }
+    }
+    ```
+
+- 参数说明
+
+  - animationname：必写项，定义animation的名称。
+  - keyframes-selector：必写项，动画持续时间的百分比，0-100%、from(代替：0%)、to(代替：100%)
+  - css-style：必写项，一个或多个合法的CSS样式属性
+
+#### CSS3 will-change
+
+- 目标
+  - 增强页面渲染性能
+- CPU和GPU
+  - CPU即中央处理器，解释计算机指令以及处理计算机软件中的数据。
+  - GPU即图形处理器，专门处理和绘制图形相关的硬件。GPU时专为执行复杂的数学和几何计算而设计的，有了它，CPU就从图形处理的认为u中解放出来，可以执行其它更多的系统任务。
+- 硬件加速
+  - 在计算机中把计算量非常大的工作分配给专门的硬件来处理，减轻CPU的工作量。
+- 现状
+  - CSS的动画、变形、渐变并不会自动触发GPU加速，而是使用里浏览器稍慢的软件软件渲染引擎。
+  - 在transition，transform和animation的世界里，应用卸载进程到GPU以加快速度。
+  - 只有3D变形会有自己的layer，2D变形不会。
+
+##### translateZ() （or translate3d()）Hack
+
+- 为元素添加没有变化的3D变形，骗取浏览器触发硬件加速。
+
+- 代价
+  - 这种情况通过向他自己的层叠加元素，占用RAM和GPU储存空间。
+
+##### will-change
+
+- 提前通知浏览器元素将要做什么动画，让浏览器提前准备合适的优化设置。
+
+- 语法
+
+  - ```css
+    will-change:auto|scroll-position|contents|<custom-ident>|<animateable-frature>;
+    ```
+
+- 兼容性
+
+  - IE13+、FireFox47+、Chrome49+、Safari9.1+、Opera39+、IOS9.3+、Android52+
+
+- 关键词说明
+
+  - auto：此关键词表示没有特定的意图，适用于它通常所做的任何启发式和优化。
+  - scroll-position：表示将要改变元素的滚动位置。
+  - centents：表示将要改变元素的内容。
+  - `<custom-ident>`：明确指定将要改变的属性与给定名称。
+  - `<animateable-feature>`：可动画的一些特征值，比如left、top、margin等。
+
+- 注意
+
+  - 勿滥用、提前声明、remove。
 
 ### 第7课 CSS3图片切换特效
 
@@ -1162,10 +1353,12 @@ HTML5 适合开发哪些应用？
 	通过本阶段学习，大家不仅可以掌握js的基础知识，还能学会网站开发中常用的图片轮播特效。
 
 
+
 ### 第1课 语法
 
 		JavaScript语法
 		本课程讲解JavaScript的语法、数据类型、基本算数和逻辑运算操作
+
 
 
 ### 第2课 流程控制语句
@@ -1174,10 +1367,12 @@ HTML5 适合开发哪些应用？
 		掌握JavaScript中条件分支语句和循环语句的使用，用简洁的代码实现强大功能
 
 
+
 ### 第3课 函数
 
 		JavaScript函数
 		掌握函数的使用，学习函数的封装，体会代码复用的过程和它带来的便利
+
 
 
 ### 第4课 内置对象
@@ -1186,10 +1381,12 @@ HTML5 适合开发哪些应用？
 		学习内置对象的常用属性和方法，方便我们开发中直接调用，进而实现更多功能
 
 
+
 ### 第5课 DOM基础
 
 		JavaScript DOM基础
 		DOM的方法和属性既可以获取网页中的元素，也可以设置元素的内容、样式及效果
+
 
 
 ### 第6课 DOM事件
@@ -1198,10 +1395,12 @@ HTML5 适合开发哪些应用？
 		为页面中的元素绑定键盘或鼠标事件，从而可以触发和实现我们想要的交互效果
 
 
+
 ### 第7课 BOM基础
 
 		JavaScript BOM基础
 		学习浏览器对象模型“BOM”，可以对浏览器窗口进行访问和操作，与浏览器“对话”
+
 
 
 ### 第8课 实现轮播特效
@@ -1216,10 +1415,12 @@ HTML5 适合开发哪些应用？
 	本阶段，将带领大家进一步探索JavaScript中的奥秘，教大家如何使用调试工具。还有变量、作用域、函数是怎么样来运用， 以及它们之前的关系是怎样的，我们来一步一步揭开它们的面纱。
 
 
+
 ### 第1课 调试工具
 
 		调试工具
 		学习调试工具，实践如何快速调试代码，并实时预览，体验快速调试代码的过程
+
 
 
 ### 第2课 变量、作用域
@@ -1228,10 +1429,12 @@ HTML5 适合开发哪些应用？
 		我们一起探究变量、作用域的本质，了解它们的定义及使用方法
 
 
+
 ### 第3课 函数深入讲解
 
 		JavaScript函数深入讲解
 		研究函数的本质，了解函数的定义、调用，以及函数的参数和返回值
+
 
 
 ### 第4课 实现简易计算器
@@ -1244,6 +1447,7 @@ HTML5 适合开发哪些应用？
 ## 步骤5: 项目实战
 
 		光学不练假把式，实践是巩固知识最好的方法，本环节，将带领大家一步步开发出炫酷的动态网页，让大家能够从实践中总结经验，并且提升解决问题的能力。
+
 
 
 ### 第1课 H5+CSS3+JS实现炫酷网页
