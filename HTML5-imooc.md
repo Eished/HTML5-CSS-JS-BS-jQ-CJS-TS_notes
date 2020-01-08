@@ -1340,7 +1340,26 @@ HTML5 适合开发哪些应用？
 
   - 勿滥用、提前声明、remove。
 
-### 第7课 CSS3图片切换特效
+### 第7课 多列
+
+1. 在 CSS3 中，可以创建多列来对文本或者区域进行布局
+
+2. 下表列出了所有 CSS3 的多列属性：
+
+   | 属性                                                         | 描述                                     |
+   | :----------------------------------------------------------- | :--------------------------------------- |
+   | [column-count](https://www.runoob.com/cssref/css3-pr-column-count.html) | 指定元素应该被分割的列数。               |
+   | [column-fill](https://www.runoob.com/cssref/css3-pr-column-fill.html) | 指定如何填充列                           |
+   | [column-gap](https://www.runoob.com/cssref/css3-pr-column-gap.html) | 指定列与列之间的间隙                     |
+   | [column-rule](https://www.runoob.com/cssref/css3-pr-column-rule.html) | 所有 column-rule-* 属性的简写            |
+   | [column-rule-color](https://www.runoob.com/cssref/css3-pr-column-rule-color.html) | 指定两列间边框的颜色                     |
+   | [column-rule-style](https://www.runoob.com/cssref/css3-pr-column-rule-style.html) | 指定两列间边框的样式                     |
+   | [column-rule-width](https://www.runoob.com/cssref/css3-pr-column-rule-width.html) | 指定两列间边框的厚度                     |
+   | [column-span](https://www.runoob.com/cssref/css3-pr-column-span.html) | 指定元素要跨越多少列                     |
+   | [column-width](https://www.runoob.com/cssref/css3-pr-column-width.html) | 指定列的宽度                             |
+   | [columns](https://www.runoob.com/cssref/css3-pr-columns.html) | 设置 column-width 和 column-count 的简写 |
+
+### 第8课 CSS3图片切换特效
 
 		CSS3图片切换特效
 		介绍了几种非常漂亮的图片切换特效，大家对CSS3的认识会有质的提高
@@ -1454,3 +1473,52 @@ HTML5 适合开发哪些应用？
 
 		H5+CSS3+JS实现炫酷网页
 		带领大家实现真实项目：“慕课手机宣传页”，面对综合需求，大展身手的时候到了！
+#### 学习内容
+
+- 前端开发流程以及必要的工具使用
+- HTML5的标签、标签的结构：BEM开发模式
+- CSS3、CSS过渡动画、帧动画
+- JS元素的获取、事件响应处理
+- 通过学习，能独立承担工作中前端开发的角色
+
+#### 前端开发流程
+
+1. 需求分析（产品经理）
+2. 视觉设计、交互动画设计（视觉交互）
+3. 前端静态页开发、动态效果开发（前端开发）
+
+#### 相关工具
+
+- 编辑器：Sublime3
+- 标注工具：PxCook
+- 切图工具：Photoshop
+
+#### 静态页具体流程
+
+1. 视觉设计稿.psd
+2. 标注颜色、行高、字体、大小
+3. PS切图
+4. 合并图片：雪碧图 (使用在线工具合并)
+5. BEM开发模式
+   - BEM代表块（Block），元素（Element），修饰符（Modifier）
+   - BEM设计模式：
+     - 模块(没有前缀，多个单词用 - 连接)
+     - 元素(元素在模块之后，可以多个层级，以 __ 连接)
+   - 先想好CSS样式名称，再填入HTML标签
+
+#### 动态页面开发
+
+##### 用到的CSS3新特性
+
+- 新的选择器，如：div:last-child
+- 多列布局，如：-webkit-column-count:3
+- 圆角：border-radius
+- transform：位置变动
+- transitions：过渡效果
+- animation：动画效果
+
+##### 让元素动起来
+
+- 动画样式约定
+- 动画测试页面，事件模拟
+
