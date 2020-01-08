@@ -1401,7 +1401,7 @@ HTML5 适合开发哪些应用？
 		JavaScript BOM基础
 		学习浏览器对象模型“BOM”，可以对浏览器窗口进行访问和操作，与浏览器“对话”
 
-
+![image-20200108140019028](E:\web\学习笔记\HTML5+CSS+JS+Bootstrap+jQuery+CreateJS+TypeScript+实战系列视频_notes\HTML5-imooc.assets\image-20200108140019028.png)
 
 ### 第8课 实现轮播特效
 
