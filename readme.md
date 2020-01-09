@@ -731,7 +731,7 @@ p {color:blue;}
 
    单独使用 padding 属性可以改变上下左右的填充。
 
-   ![img](E:\web\学习笔记\HTML5+CSS+JS+Bootstrap+jQuery+CreateJS+TypeScript+实战系列视频_notes\readme.assets\VlwVi.png)
+   ![img](readme.assets\VlwVi.png)
 
    | 属性                                                         | 说明                                       |
    | :----------------------------------------------------------- | :----------------------------------------- |

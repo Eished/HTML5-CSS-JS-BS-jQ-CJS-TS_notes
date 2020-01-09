@@ -212,9 +212,9 @@
 		传统布局与HTML5网页布局的区别和意义，通过案例讲解如何使用HTML5搭建网页
 #### 传统布局与HTML5布局
 
-<img src="E:\web\学习笔记\HTML5+CSS+JS+Bootstrap+jQuery+CreateJS+TypeScript+实战系列视频_notes\HTML5-imooc.assets\20200104215508.png"/>
+<img src="HTML5-imooc.assets\20200104215508.png"/>
 
-![](E:\web\学习笔记\HTML5+CSS+JS+Bootstrap+jQuery+CreateJS+TypeScript+实战系列视频_notes\HTML5-imooc.assets\20200104215554.png)
+![](HTML5-imooc.assets\20200104215554.png)
 
 #### 新布局的意义
 
@@ -748,7 +748,7 @@ HTML5 适合开发哪些应用？
     - 角度指水平线和渐变线之间的角度，逆时针方向计算
     - 0deg 将创建一个从上至下的渐变，90deg 将创建一个从左至右的渐变
 
-  ![image-20200105112613428](E:\web\学习笔记\HTML5+CSS+JS+Bootstrap+jQuery+CreateJS+TypeScript+实战系列视频_notes\HTML5-imooc.assets\image-20200105112613428.png)
+  ![image-20200105112613428](HTML5-imooc.assets\image-20200105112613428.png)
 
 - 线性渐变 - 颜色节点
 
@@ -966,7 +966,7 @@ HTML5 适合开发哪些应用？
 - 目标矩阵说明
   - `ax + cy + e` 为变换后的水平坐标，`bx + dy + f` 表示变换后的垂直位置
 
-![image-20200106150408525](E:\web\学习笔记\HTML5+CSS+JS+Bootstrap+jQuery+CreateJS+TypeScript+实战系列视频_notes\HTML5-imooc.assets\image-20200106150408525.png)
+![image-20200106150408525](HTML5-imooc.assets\image-20200106150408525.png)
 
 ##### 矩阵matrix 举例
 
@@ -1019,7 +1019,7 @@ HTML5 适合开发哪些应用？
 
   对称轴一定通过元素变换的中心点，k是对称轴的斜率
 
-  ![image-20200106154232828](E:\web\学习笔记\HTML5+CSS+JS+Bootstrap+jQuery+CreateJS+TypeScript+实战系列视频_notes\HTML5-imooc.assets\image-20200106154232828.png)
+  ![image-20200106154232828](HTML5-imooc.assets\image-20200106154232828.png)
 
 ##### 3D变换中的矩阵
 
@@ -1031,7 +1031,7 @@ HTML5 适合开发哪些应用？
   transform: matrix3d(sx,0,0,0,0,sy,0,0,0,0,sz,0,0,0,0,1)
   ```
 
-  ![image-20200106155507645](E:\web\学习笔记\HTML5+CSS+JS+Bootstrap+jQuery+CreateJS+TypeScript+实战系列视频_notes\HTML5-imooc.assets\image-20200106155507645.png)
+  ![image-20200106155507645](HTML5-imooc.assets\image-20200106155507645.png)
 
 #### CSS3 扩展属性
 
@@ -1420,7 +1420,7 @@ HTML5 适合开发哪些应用？
 		JavaScript BOM基础
 		学习浏览器对象模型“BOM”，可以对浏览器窗口进行访问和操作，与浏览器“对话”
 
-![image-20200108140019028](E:\web\学习笔记\HTML5+CSS+JS+Bootstrap+jQuery+CreateJS+TypeScript+实战系列视频_notes\HTML5-imooc.assets\image-20200108140019028.png)
+![image-20200108140019028](HTML5-imooc.assets\image-20200108140019028.png)
 
 ### 第8课 实现轮播特效
 
