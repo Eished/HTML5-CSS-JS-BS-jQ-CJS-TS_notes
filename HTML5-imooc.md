@@ -1167,7 +1167,7 @@ HTML5 适合开发哪些应用？
 
 - 检索或设置对象所应用的动画名称
 - 语法
-  - `animation-naem:keyframename|none;`
+  - `animation-name:keyframename|none;`
 - 参数说明
   - keyframename：指定要绑定到选择器的关键帧的名称
   - none：指定没有动画（可用于覆盖从级联的动画）
@@ -1263,6 +1263,77 @@ HTML5 适合开发哪些应用？
   - ```css
     animation:name duration timing-function delay iteration-count direction fill-mode plat-state;
     ```
+  
+- 实例:
+
+```html
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>CSS3充电动画</title>
+  <style>
+    .container {
+      position: relative;
+      overflow: hidden;
+      width: 180px;
+      height: 80px;
+      border-radius: 10px;
+      border: 1px solid black;
+    }
+
+    .container-box {
+      overflow: hidden;
+      height: 80px;
+      animation: mykey 1.5s infinite;
+    }
+
+    .cube {
+      box-sizing: border-box;
+      width: 60px;
+      height: 80px;
+      float: left;
+      background: greenyellow;
+      border-radius: 10px;
+      border: 1px solid black;
+    }
+
+    @keyframes mykey {
+
+      0%,
+      32% {
+        width: 60px;
+      }
+
+      33%,
+      65% {
+        width: 120px
+      }
+
+      66%,
+      100% {
+        width: 180px;
+      }
+    }
+  </style>
+</head>
+
+<body>
+  <div class="container">
+    <div class="container-box">
+      <div class="cube"></div>
+      <div class="cube"></div>
+      <div class="cube"></div>
+    </div>
+  </div>
+</body>
+
+</html>
+```
+
+
 
 #### CSS3 @keyframes
 
