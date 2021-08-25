@@ -204,21 +204,21 @@ grid-gap: 20px 20px;
 
 多个单元格合并成一个区域的写法如下。
 
-> ```css
-> grid-template-areas: 'a a a'
->                      'b b b'
->                      'c c c';
-> ```
+```css
+grid-template-areas: 'a a a'
+                     'b b b'
+                     'c c c';
+```
 
 上面代码将9个单元格分成`a`、`b`、`c`三个区域。
 
 如果某些区域不需要利用，则使用"点"（`.`）表示。
 
-> ```css
-> grid-template-areas: 'a . c'
->                      'd . f'
->                      'g . i';
-> ```
+```css
+grid-template-areas: 'a . c'
+                     'd . f'
+                     'g . i';
+```
 
 上面代码中，中间一列为点，表示没有用到该单元格，或者该单元格不属于任何区域。
 
@@ -280,9 +280,9 @@ grid-gap: 20px 20px;
       <div class="item">6</div>
       <div class="item">7</div>
       <div class="item">8</div>
-      <div class="item">9</div> -->
+      <div class="item">9</div-->
     </div>
-    <!-- <span>2</span> -->
+    <!-- <span>2</span-->
   </body>
 </html>
 ```
@@ -311,24 +311,24 @@ grid-auto-flow: column;
 
 `align-items ` 属性设置单元格内容的垂直位置（上中下）。
 
-> ```css
-> .container {
->   justify-items: start | end | center | stretch;
->   align-items: start | end | center | stretch;
-> }
-> ```
+```css
+.container {
+  justify-items: start | end | center | stretch;
+  align-items: start | end | center | stretch;
+}
+```
 
 这两个属性的写法完全相同，都可以取下面这些值。
 
-> - start：对齐单元格的起始边缘。
-> - end：对齐单元格的结束边缘。
-> - center：单元格内部居中。
-> - stretch：拉伸，占满单元格的整个宽度（默认值）。
+- start：对齐单元格的起始边缘。
+- end：对齐单元格的结束边缘。
+- center：单元格内部居中。
+- stretch：拉伸，占满单元格的整个宽度（默认值）。
 
 `place-items` 属性是`align-items`属性和`justify-items`属性的合并简写形式。
 
 ```css
-place-items: <align-items> <justify-items>;
+place-items: <align-items<justify-items>;
 
 place-items: start end;
 ```
@@ -358,15 +358,15 @@ space-evenly - 项目与项目的间隔相等，项目与容器边框之间也�
 
 `place-content`属性是`align-content`属性和`justify-content`属性的合并简写形式。
 
-> ```css
-> place-content: <align-content> <justify-content>
-> ```
+```css
+place-content: <align-content<justify-content>
+```
 
 下面是一个例子。
 
-> ```css
-> place-content: space-around space-evenly;
-> ```
+```css
+place-content: space-around space-evenly;
+```
 
 如果省略第二个值，浏览器就会假定第二个值等于第一个值。
 
@@ -394,20 +394,204 @@ space-evenly - 项目与项目的间隔相等，项目与容器边框之间也�
 
 项目的位置是可以指定的，具体方法就是指定项目的四个边框，分别定位在哪根网格线。
 
-```
+```css
 grid-column-start属性：左边框所在的垂直网格线
 grid-column-end属性：右边框所在的垂直网格线
 grid-row-start属性：上边框所在的水平网格线
 grid-row-end属性：下边框所在的水平网格线
 ```
 
-只指定了1号项目的左右边框，没有指定上下边框，所以会采用默认位置，即上边框是第一根水平网格线，下边框是第二根水平网格线。
+只指定项目的左右边框，没有指定上下边框，会采用默认位置，即上边框是第一根水平网格线，下边框是第二根水平网格线。
+
+这四个属性的值，除了指定为第几个网格线，还可以指定为网格线的名字。
+
+```css
+.item-1 {
+  grid-column-start: header-start;
+  grid-column-end: header-end;
+}
+```
+
+这四个属性的值还可以使用`span`关键字，表示"跨越"，即左右边框（上下边框）之间跨越多少个网格。
+
+```css
+.item-1 {
+  grid-column-start: span 2;
+}
+```
+
+使用这四个属性，如果产生了项目的重叠，则使用`z-index`属性指定项目的重叠顺序。
 
 #### 4.2 grid-column 属性， grid-row 属性
 
+`grid-column`属性是`grid-column-start`和`grid-column-end`的合并简写形式，
+
+`grid-row`属性是`grid-row-start`属性和`grid-row-end`的合并简写形式。
+
+```css
+.item {
+  grid-column: <start-line/ <end-line>;
+  grid-row: <start-line/ <end-line>;
+}
+```
+
+这两个属性之中，也可以使用`span`关键字，表示跨越多少个网格。
+
+```css
+.item-1 {
+  background: #b03532;
+  grid-column: 1 / 3;
+  grid-row: 1 / 3;
+}
+/* 等同于 */
+.item-1 {
+  background: #b03532;
+  grid-column: 1 / span 2;
+  grid-row: 1 / span 2;
+}
+```
+
+斜杠以及后面的部分可以省略，默认跨越一个网格。
+
+```css
+.item-1 {
+  grid-column: 1;
+  grid-row: 1;
+}
+```
+
 #### 4.3 grid-area 属性
 
+`grid-area`属性指定项目放在哪一个区域。
+
+配合 `grid-template-areas:` 使用，
+
+```css
+#cantainer{
+  grid-template-areas:
+    'a a a'
+    'b . c'
+    'b . c'
+    'd d d';
+}
+.item-1 {
+  grid-area: d;
+}
+```
+
+`grid-area`属性还可用作`grid-row-start`、`grid-column-start`、`grid-row-end`、`grid-column-end`的合并简写形式，直接指定项目的位置。
+
+```css
+.item {
+  grid-area: <row-start/ <column-start/ <row-end/ <column-end>;
+}
+
+.item-1 {
+  grid-area: 1 / 1 / 3 / 3;
+}
+```
+
 #### 4.4 justify-self 属性， align-self 属性， place-self 属性
+
+`justify-self`属性设置单元格内容的水平位置（左中右），跟`justify-items`属性的用法完全一致，但只作用于单个项目。
+
+`align-self`属性设置单元格内容的垂直位置（上中下），跟`align-items`属性的用法完全一致，也是只作用于单个项目。
+
+```css
+.item {
+  justify-self: start | end | center | stretch;
+  align-self: start | end | center | stretch;
+}
+```
+
+这两个属性都可以取下面四个值。
+
+- start：对齐单元格的起始边缘。
+- end：对齐单元格的结束边缘。
+- center：单元格内部居中。
+- stretch：拉伸，占满单元格的整个宽度（默认值）。
+
+`place-self`属性是`align-self`属性和`justify-self`属性的合并简写形式。
+
+```css
+place-self: <align-self> <justify-self>;
+```
+
+如果省略第二个值，`place-self`属性会认为这两个值相等。
+
+### 五、画骰子🎲
+
+![image-20210825151535410](grid-flex网页布局教程.assets/image-20210825151535410.png)
+
+```html
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+    <style>
+      #container {
+        background-color: rgb(240, 240, 240);
+        border-radius: 10px;
+        border: 10px solid #333;
+        display: grid;
+        width: 380px;
+        height: 380px;
+        grid-template-columns: repeat(3, 120px);
+        grid-template-rows: repeat(3, 120px);
+        grid-auto-rows: 120px;
+        align-items: center;
+        justify-items: center;
+        align-content: center;
+        justify-content: center;
+      }
+      .item {
+        background-color: rgb(58, 58, 58);
+        border: 1px solid rgb(0, 0, 0);
+        height: 100px;
+        width: 100px;
+        border-radius: 50px;
+        text-align: center;
+        line-height: 100px;
+        color: #fff;
+        font-size: 50px;
+      }
+      .one {
+        grid-area: 2 / 2 / 3 / 3;
+      }
+      .two {
+        grid-area: 3 / 3 / 4 / 4;
+      }
+      .three {
+        grid-area: 3 / 3 / 4 / 4;
+      }
+      .fiveR {
+        grid-area: 1 / 3 / 2 / 4;
+      }
+      .fiveL {
+        grid-area: 3 / 1 / 4 / 2;
+      }
+    </style>
+  </head>
+  <body>
+    <div id="container">
+      <div class="item"><div class="content">1</div></div>
+      <div class="item one">2</div>
+      <div class="item fiveR">3</div>
+      <div class="item fiveL">4</div>
+      <!-- <div class="item">5</div>
+      <div class="item">6</div>
+      <div class="item">7</div>
+      <div class="item">8</div> -->
+      <div class="item two">9</div>
+    </div>
+  </body>
+</html>
+
+```
+
 
 
 
