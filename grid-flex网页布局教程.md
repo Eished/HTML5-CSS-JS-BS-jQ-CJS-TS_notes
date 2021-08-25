@@ -175,6 +175,8 @@ grid-column-gap: 10px;
 grid-row-gap: 10px;
 ```
 
+审查元素，点击grid标识，显示虚拟框。
+
 ![image-20210824162242622](常见网页布局.assets/image-20210824162242622.png)
 
 `grid-gap`属性是`grid-column-gap`和`grid-row-gap`的合并简写形式:
@@ -597,11 +599,416 @@ place-self: <align-self> <justify-self>;
 
 ## [Flex 布局教程：语法篇](https://www.ruanyifeng.com/blog/2015/07/flex-grammar.html)
 
+布局的传统解决方案，基于[盒状模型](https://developer.mozilla.org/en-US/docs/Web/CSS/box_model)，依赖 [`display`](https://developer.mozilla.org/en-US/docs/Web/CSS/display) 属性 + [`position`](https://developer.mozilla.org/en-US/docs/Web/CSS/position)属性 + [`float`](https://developer.mozilla.org/en-US/docs/Web/CSS/float)属性。它对于那些特殊布局非常不方便，比如，[垂直居中](https://css-tricks.com/centering-css-complete-guide/)就不容易实现。
 
+Flex 布局，它已经得到了所有浏览器的支持。
+
+[Basic_Concepts_of_Flexbox](https://developer.mozilla.org/zh-CN/docs/Web/CSS/CSS_Flexible_Box_Layout/Basic_Concepts_of_Flexbox)
+
+### 一、Flex 布局是什么？
+
+Flex 是 Flexible Box 的缩写，意为"弹性布局"，用来为盒状模型提供最大的灵活性。
+
+任何一个容器都可以指定为 Flex 布局。
+
+行内元素也可以使用 Flex 布局。
+
+Webkit 内核的浏览器，必须加上`-webkit`前缀。
+
+```css
+.box{
+  display: -webkit-flex; /* Safari */
+  display: flex;
+}
+```
+
+注意，设为 Flex 布局以后，子元素的`float`、`clear`和`vertical-align`属性将失效。
+
+>  **`vertical-align`** 用来指定行内元素（inline）或表格单元格（table-cell）元素的垂直对齐方式。
+>
+> `vertical-align` 只对行内元素、表格单元格元素生效：不能用它垂直对齐[块级元素](https://developer.mozilla.org/zh-CN/docs/Web/HTML/Block-level_elements)。
+
+### 二、基本概念
+
+采用 Flex 布局的元素，称为 Flex 容器（flex container），简称"容器"。它的所有子元素自动成为容器成员，称为 Flex 项目（flex item），简称"项目"。
+
+![image-20210825154922192](grid-flex网页布局教程.assets/image-20210825154922192.png)
+
+容器默认存在两根轴：**水平的主轴（main axis）**和**垂直的交叉轴（cross axis）**。
+
+- 主轴的开始位置（与边框的交叉点）叫做`main start`，
+  - 结束位置叫做`main end`；
+- 交叉轴的开始位置叫做`cross start`，
+  - 结束位置叫做`cross end`。
+
+项目默认沿主轴排列。
+
+- 单个项目占据的主轴空间叫做`main size`，
+- 占据的交叉轴空间叫做`cross size`。
+
+### 三、容器的属性
+
+以下6个属性设置在容器上。
+
+- `flex-direction`
+- `flex-wrap`
+- `flex-flow`
+- `justify-content`
+- `align-items`
+- `align-content`
+
+#### 3.1 flex-direction属性
+
+`flex-direction` 属性决定主轴的方向（即项目的排列方向）。
+
+```css
+.box {
+  flex-direction: row | row-reverse | column | column-reverse;
+}
+
+row（默认值）：主轴为水平方向，起点在左端。
+row-reverse：主轴为水平方向，起点在右端。
+column：主轴为垂直方向，起点在上沿。
+column-reverse：主轴为垂直方向，起点在下沿。
+```
+
+#### 3.2 flex-wrap属性
+
+默认情况下，项目都排在一条线（又称"轴线"）上。
+
+`flex-wrap`属性定义，如果一条轴线排不下，如何换行。
+
+```css
+.box{
+  flex-wrap: nowrap | wrap | wrap-reverse;
+}
+
+nowrap（默认）：不换行。
+wrap：换行，第一行在上方。
+wrap-reverse：换行，第一行在下方。
+```
+
+#### 3.3 flex-flow
+
+`flex-flow`属性是`flex-direction`属性和`flex-wrap`属性的简写形式，默认值为`row nowrap`。
+
+```css
+.box {
+  flex-flow: <flex-direction> || <flex-wrap>;
+}
+```
+
+
+
+#### 3.4 justify-content属性
+
+`justify-content`属性定义了项目在主轴上的对齐方式。
+
+```css
+.box {
+  justify-content: flex-start | flex-end | center | space-between | space-around;
+}
+
+能取5个值，具体对齐方式与轴的方向有关。下面假设主轴为从左到右。
+
+flex-start（默认值）：左对齐
+flex-end：右对齐
+center： 居中
+space-between：两端对齐，项目之间的间隔都相等。
+space-around：每个项目两侧的间隔相等。所以，项目之间的间隔比项目与边框的间隔大一倍。
+space-evenly：所有间隔相等。
+```
+
+
+
+#### 3.5 align-items属性
+
+`align-items`属性定义项目在交叉轴上如何对齐。
+
+```css
+.box {
+  align-items: flex-start | flex-end | center | baseline | stretch;
+}
+
+能取5个值。具体的对齐方式与交叉轴的方向有关，下面假设交叉轴从上到下。
+
+flex-start：交叉轴的起点对齐。
+flex-end：交叉轴的终点对齐。
+center：交叉轴的中点对齐。
+baseline: 项目的第一行文字的基线对齐。
+stretch（默认值）：如果项目未设置高度或设为auto，将占满整个容器的高度。
+```
+
+
+
+#### 3.6 align-content属性
+
+`align-content`属性定义了多根轴线的对齐方式。
+
+如果项目只有一根轴线，该属性不起作用。
+
+在交叉轴方向上有多行时，align-content属性能作用。
+
+多个轴线既：一个容器内多个flex容器。
+
+纵向分布
+
+```css
+.box {
+  align-content: flex-start | flex-end | center | space-between | space-around | stretch;
+}
+
+flex-start：与交叉轴的起点对齐。
+flex-end：与交叉轴的终点对齐。
+center：与交叉轴的中点对齐。
+space-between：与交叉轴两端对齐，轴线之间的间隔平均分布。
+space-around：每根轴线两侧的间隔都相等。所以，轴线之间的间隔比轴线与边框的间隔大一倍。
+stretch（默认值）：轴线占满整个交叉轴。
+```
+
+
+
+### 四、项目的属性
+
+以下6个属性设置在项目上。
+
+- `order`
+- `flex-grow`
+- `flex-shrink`
+- `flex-basis`
+- `flex`
+- `align-self`
+
+#### 4.1 order属性
+
+`order`属性定义项目的排列顺序。
+
+数值越小，排列越靠前，默认为0。
+
+```css
+.item {
+  order: <integer>;
+}
+```
+
+
+
+#### 4.2 flex-grow属性
+
+`flex-grow`属性定义项目的放大比例，默认为`0`，即如果存在剩余空间，也不放大。
+
+```css
+.item {
+  flex-grow: <number>; /* default 0 */
+}
+```
+
+如果所有项目的`flex-grow`属性都为1，则它们将等分剩余空间（如果有的话）。
+
+如果一个项目的`flex-grow`属性为2，其他项目都为1，则前者占据的剩余空间将比其他项多一倍。
+
+#### 4.3 flex-shrink属性
+
+`flex-shrink`属性定义了项目的缩小比例，默认为1，即如果空间不足，该项目将缩小。
+
+```css
+.item {
+  flex-shrink: <number>; /* default 1 */
+}
+```
+
+如果所有项目的`flex-shrink`属性都为1，当空间不足时，都将等比例缩小。
+
+如果一个项目的`flex-shrink`属性为0，其他项目都为1，则空间不足时，前者不缩小。
+
+负值对该属性无效。
+
+#### 4.4 flex-basis属性
+
+`flex-basis`属性定义了在分配多余空间之前，项目占据的主轴空间（main size）。
+
+浏览器根据这个属性，计算主轴是否有多余空间。
+
+它的默认值为`auto`，即项目的本来大小。
+
+```css
+.item {
+  flex-basis: <length> | auto; /* default auto */
+}
+```
+
+它可以设为跟`width`或`height`属性一样的值（比如350px），则项目将占据固定空间。
+
+#### 4.5 flex属性
+
+`flex`属性是`flex-grow`, `flex-shrink` 和 `flex-basis`的简写，默认值为`0 1 auto`。后两个属性可选。
+
+```css
+.item {
+  flex: none | [ <'flex-grow'> <'flex-shrink'>? || <'flex-basis'> ]
+}
+```
+
+该属性有两个快捷值：`auto` (`1 1 auto`) 和 none (`0 0 auto`)。
+
+建议优先使用这个属性，而不是单独写三个分离的属性，因为浏览器会推算相关值。
+
+#### 4.6 align-self属性
+
+`align-self`属性允许单个项目有与其他项目不一样的对齐方式，可覆盖`align-items`属性。
+
+默认值为`auto`，表示继承父元素的`align-items`属性，如果没有父元素，则等同于`stretch`。
+
+```css
+.item {
+  align-self: auto | flex-start | flex-end | center | baseline | stretch;
+}
+```
+
+该属性可能取6个值，除了`auto`，其他都与`align-items`属性完全一致。
 
 ## [Flex 布局教程：实例篇](https://www.ruanyifeng.com/blog/2015/07/flex-examples.html)
 
+### 一、骰子🎲
 
+```html
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+    <style>
+      .box {
+        display: flex;
+        flex-wrap: wrap;
+        width: 380px;
+        height: 380px;
+        border-radius: 10px;
+        border: rgb(133, 133, 133) 10px solid;
+      }
+      .item {
+        width: 100px;
+        height: 100px;
+        background-color: rgb(0, 0, 0);
+        border: 10px solid rgb(255, 255, 255);
+        border-radius: 60px;
+        color: #fff;
+        text-align: center;
+        line-height: 100px;
+        font-size: 50px;
+      }
+      .b1 {
+        /* align-items: flex-start; */
+        /* flex-flow: row wrap; */
+        align-items: flex-end;
+        justify-content: flex-end;
+      }
+      /* a
+           
+             a
+      */
+      .b2 {
+        justify-content: space-between;
+        /* align-items: flex-end; */
+      }
+      .b2 > .item:nth-child(2) {
+        align-self: flex-end;
+      }
+      /* a  
+           a
+             a
+      */
+      .b3 {
+        justify-content: space-between;
+        /* align-items: flex-end; */
+      }
+      .b3 > .item:nth-child(2) {
+        align-self: center;
+      }
+      .b3 > .item:nth-child(3) {
+        align-self: flex-end;
+      }
+      /* a a a
+           
+         a a a
+      */
+      .b6 {
+        justify-content: space-between;
+        align-content: space-between;
+        /* flex-direction: column; */
+      }
+      /* a a a
+           a
+         a   a
+      */
+      .row {
+        flex-basis: 100%;
+        display: flex;
+        justify-content: space-between;
+      }
+      .b7 > .row:nth-child(2) {
+        justify-content: center;
+      }
+      .b7 > .row:nth-child(3) {
+        justify-content: space-between;
+      }
+    </style>
+  </head>
+  <body>
+    <div class="box b1">
+      <div class="item a1-1">1</div>
+    </div>
+    <div class="box b2">
+      <div class="item">1</div>
+      <div class="item">2</div>
+    </div>
+    <div class="box b3">
+      <div class="item">1</div>
+      <div class="item">2</div>
+      <div class="item">3</div>
+    </div>
+    <div class="box b6">
+      <div class="item">1</div>
+      <div class="item">2</div>
+      <div class="item">3</div>
+      <div class="item">4</div>
+      <div class="item">5</div>
+      <div class="item">6</div>
+    </div>
+    <div class="box b7">
+      <div class="row">
+        <div class="item">1</div>
+        <div class="item">2</div>
+        <div class="item">3</div>
+      </div>
+      <div class="row">
+        <div class="item">4</div>
+      </div>
+      <div class="row">
+        <div class="item">5</div>
+        <div class="item">6</div>
+      </div>
+    </div>
+  </body>
+</html>
+
+```
+
+### 二、网格布局
+
+### 三、圣杯布局
+
+### 四、输入框的布局
+
+### 五、悬挂式布局
+
+### 六、固定的底栏
+
+### 七、流式布局
+
+### 八、双飞翼布局
 
 ## [Grid and flexbox](https://developer.mozilla.org/zh-CN/docs/Web/CSS/CSS_Grid_Layout/Relationship_of_Grid_Layout#grid_and_flexbox)
 
@@ -609,3 +1016,4 @@ place-self: <align-self> <justify-self>;
 
 - 我只需要按行或者列控制布局？那就用弹性盒子
 - 我需要同时按行和列控制布局？那就用网格
+

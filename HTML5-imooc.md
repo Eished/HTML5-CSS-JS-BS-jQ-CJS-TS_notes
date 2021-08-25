@@ -492,7 +492,17 @@ HTML5 适合开发哪些应用？
 - CSS3的 `:nth` 选择器
   - 我们把 CSS3 的 `:nth` 选择器也称为CSS3结构类
 - **选择方法：**
-  - `:first-child` `:last-child` `:nth-child()` `:nth-last-child()` `:nth-of-type()` `:nth-last-of-type()` `:first-of-type` `:last-of-type` `:only-child` `:only-of-type` `:empty`
+  - `:first-child` 
+  - `:last-child`
+  - `:nth-child()`
+  - `:nth-last-child()` 
+  - `:nth-of-type()`
+  - `:nth-last-of-type()` 
+  - `:first-of-type`
+  - `:last-of-type`
+  - `:only-child` 
+  - `:only-of-type`
+  - `:empty`
 - `Element:first-child`
   - 概念
     - 选择属于其父元素的首个子元素的每个 Element 元素
