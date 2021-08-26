@@ -657,6 +657,17 @@ Webkit 内核的浏览器，必须加上`-webkit`前缀。
 - `align-items`
 - `align-content`
 
+所有CSS属性都会有一个初始值，所以 flex 容器中的所有 flex 元素都会有下列行为：
+
+- 元素排列为一行 (`flex-direction` 属性的初始值是 `row`)。
+- 元素从主轴的起始线开始。
+- 元素不会在主维度方向拉伸，但是可以缩小。
+- 元素被拉伸来填充交叉轴大小。
+- [`flex-basis`](https://developer.mozilla.org/zh-CN/docs/Web/CSS/flex-basis) 属性为 `auto`。
+- [`flex-wrap`](https://developer.mozilla.org/zh-CN/docs/Web/CSS/flex-wrap) 属性为 `nowrap`。
+
+这会让你的元素呈线形排列，并且把自己的大小作为主轴上的大小。如果有太多元素超出容器，它们会溢出而不会换行。如果一些元素比其他元素高，那么元素会沿交叉轴被拉伸来填满它的大小。
+
 #### 3.1 flex-direction属性
 
 `flex-direction` 属性决定主轴的方向（即项目的排列方向）。
@@ -671,6 +682,12 @@ row-reverse：主轴为水平方向，起点在右端。
 column：主轴为垂直方向，起点在上沿。
 column-reverse：主轴为垂直方向，起点在下沿。
 ```
+
+交叉轴垂直于主轴，所以如果你的`flex-direction` (主轴) 设成了 `row` 或者 `row-reverse` 的话，交叉轴的方向就是沿着列向下的。
+
+如果主轴方向设成了 `column` 或者 `column-reverse`，交叉轴就是水平方向。
+
+理解主轴和交叉轴的概念对于对齐 flexbox 里面的元素是很重要的；flexbox 的特性是沿着主轴或者交叉轴对齐之中的元素。
 
 #### 3.2 flex-wrap属性
 
@@ -843,6 +860,8 @@ stretch（默认值）：轴线占满整个交叉轴。
 
 `flex`属性是`flex-grow`, `flex-shrink` 和 `flex-basis`的简写，默认值为`0 1 auto`。后两个属性可选。
 
+放大，缩小，大小
+
 ```css
 .item {
   flex: none | [ <'flex-grow'> <'flex-shrink'>? || <'flex-basis'> ]
@@ -869,7 +888,7 @@ stretch（默认值）：轴线占满整个交叉轴。
 
 ## [Flex 布局教程：实例篇](https://www.ruanyifeng.com/blog/2015/07/flex-examples.html)
 
-### 一、骰子🎲
+### 一、画骰子🎲
 
 ```html
 <!DOCTYPE html>
@@ -998,17 +1017,197 @@ stretch（默认值）：轴线占满整个交叉轴。
 
 ### 二、网格布局
 
-### 三、圣杯布局
+![image-20210826170105265](grid-flex网页布局教程.assets/image-20210826170105265.png)
 
-### 四、输入框的布局
+```html
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+    <style>
+      .Flex {
+        display: flex;
+        height: 50px;
+        align-items: center;
+        border: rgb(202, 202, 202) 1px solid;
+      }
+      .Flex-cell {
+        border: 1px #000 solid;
+        margin: 0 10px 0 10px;
+      }
+      .Flex > .Flex-cell:first-child {
+        height: 30px;
+        flex: 0 0 200px;
+        align-self: flex-start;
+      }
+      .Flex > .Flex-cell:nth-child(2) {
+        /* 放大，缩小，大小 */
+        flex: 1 0 200px;
+      }
+      .Flex > .Flex-cell:last-child {
+        height: 30px;
+        flex: 0 0 200px;
+        align-self: flex-end;
+      }
+      /* 第二行 */
+      .Flex-P {
+        display: flex;
+        flex-wrap: wrap;
+        border: rgb(206, 206, 206) 1px solid;
+      }
+      .Flex-P-cell {
+        border: 1px #000 solid;
+        margin: 0 10px 0 10px;
+        flex: 1 0 300px;
+      }
+    </style>
+  </head>
+  <body>
+    <div class="Flex">
+      <div class="Flex-cell">...</div>
+      <div class="Flex-cell">...</div>
+      <div class="Flex-cell">...</div>
+    </div>
+    <div class="Flex-P">
+      <div class="Flex-P-cell">...</div>
+      <div class="Flex-P-cell">...</div>
+      <div class="Flex-P-cell">...</div>
+    </div>
+  </body>
+</html>
 
-### 五、悬挂式布局
+```
 
-### 六、固定的底栏
+### 三、圣杯布局+媒体查询
 
-### 七、流式布局
+```html
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+    <style>
+      body {
+        margin: 0;
+        padding: 0;
+      }
+      header {
+        width: 100%;
+        background-color: burlywood;
+        height: 50px;
+      }
+      footer {
+        width: 100%;
+        background-color: rgb(87, 84, 83);
+        height: 50px;
+      }
+      section {
+        display: flex;
+        height: 200px;
+      }
+      nav {
+        flex: 0 0 200px;
+        background-color: lightblue;
+        order: -1;
+      }
+      main {
+        flex: 1 0 400px;
+        background-color: rgb(232, 255, 170);
+      }
+      aside {
+        flex: 0 1 200px;
+        background-color: rgb(88, 92, 146);
+      }
 
-### 八、双飞翼布局
+      /* 如果是小屏幕，躯干的三栏自动变为垂直叠加。 */
+      @media (max-width: 768px) {
+        section {
+          display: flex;
+          flex-direction: column;
+        }
+        nav,
+        main,
+        aside {
+          flex: auto;
+        }
+
+        .HolyGrail-body {
+          flex-direction: column;
+          flex: 1;
+        }
+        .HolyGrail-nav,
+        .HolyGrail-ads,
+        .HolyGrail-content {
+          flex: auto;
+        }
+      }
+      .HolyGrail {
+        display: flex;
+        min-height: 100vh;
+        flex-direction: column;
+      }
+
+      header,
+      footer {
+        flex: 1;
+      }
+
+      .HolyGrail-body {
+        display: flex;
+        flex: 1;
+      }
+
+      .HolyGrail-content {
+        flex: 1;
+      }
+
+      .HolyGrail-nav,
+      .HolyGrail-ads {
+        /* 两个边栏的宽度设为12em */
+        flex: 0 0 12em;
+      }
+
+      .HolyGrail-nav {
+        /* 导航放到最左边 */
+        order: -1;
+      }
+    </style>
+  </head>
+  <body>
+    <header>header</header>
+    <section>
+      <main>main</main>
+      <nav>nav</nav>
+      <aside>aside</aside>
+    </section>
+    <footer>footer</footer>
+    <br />
+    <div class="HolyGrail">
+      <header>layout two</header>
+      <div class="HolyGrail-body">
+        <main class="HolyGrail-content">...</main>
+        <nav class="HolyGrail-nav">...</nav>
+        <aside class="HolyGrail-ads">...</aside>
+      </div>
+      <footer>...</footer>
+    </div>
+  </body>
+</html>
+
+```
+
+### 四、双飞翼布局
+
+```
+
+```
+
+
 
 ## [Grid and flexbox](https://developer.mozilla.org/zh-CN/docs/Web/CSS/CSS_Grid_Layout/Relationship_of_Grid_Layout#grid_and_flexbox)
 
@@ -1016,4 +1215,30 @@ stretch（默认值）：轴线占满整个交叉轴。
 
 - 我只需要按行或者列控制布局？那就用弹性盒子
 - 我需要同时按行和列控制布局？那就用网格
+
+## [使用媒体查询](https://developer.mozilla.org/zh-CN/docs/Web/CSS/Media_Queries/Using_media_queries)
+
+单位使用rem
+
+```css
+/* 括号边一定要有空格 */
+@media screen and (max-width: 374px) {
+  /* iphone5 */
+  html {
+    font-size: 86px;
+  }
+}
+@media screen and (min-width: 375px) and (max-width: 413px) {
+  /* iphone6 7 8 */
+  html {
+    font-size: 100px;
+  }
+}
+@media screen and (min-width: 414px) {
+  /* iphone6p */
+  html {
+    font-size: 110px;
+  }
+}
+```
 
