@@ -64,7 +64,7 @@ Grid 布局的属性分成两类。一类定义在容器上面，称为容器属
 
 重复写同样的值非常麻烦，`repeat()`函数，简化重复的值。
 
-`repeat()`接受两个参数，第一个参数是重复的次数（上例是3），第二个参数是所要重复的值。
+`repeat()`接受两个参数，第一个参数是重复的次数（上例是 3），第二个参数是所要重复的值。
 
 ```css
 .container {
@@ -175,7 +175,7 @@ grid-column-gap: 10px;
 grid-row-gap: 10px;
 ```
 
-审查元素，点击grid标识，显示虚拟框。
+审查元素，点击 grid 标识，显示虚拟框。
 
 ![image-20210824162242622](常见网页布局.assets/image-20210824162242622.png)
 
@@ -196,30 +196,33 @@ grid-gap: 20px 20px;
   display: grid;
   grid-template-columns: 100px 100px 100px;
   grid-template-rows: 100px 100px 100px;
-  grid-template-areas: 'a b c'
-                       'd e f'
-                       'g h i';
+  grid-template-areas:
+    'a b c'
+    'd e f'
+    'g h i';
 }
 ```
 
-上面代码先划分出9个单元格，然后将其定名为`a`到`i`的九个区域，分别对应这九个单元格。
+上面代码先划分出 9 个单元格，然后将其定名为`a`到`i`的九个区域，分别对应这九个单元格。
 
 多个单元格合并成一个区域的写法如下。
 
 ```css
-grid-template-areas: 'a a a'
-                     'b b b'
-                     'c c c';
+grid-template-areas:
+  'a a a'
+  'b b b'
+  'c c c';
 ```
 
-上面代码将9个单元格分成`a`、`b`、`c`三个区域。
+上面代码将 9 个单元格分成`a`、`b`、`c`三个区域。
 
 如果某些区域不需要利用，则使用"点"（`.`）表示。
 
 ```css
-grid-template-areas: 'a . c'
-                     'd . f'
-                     'g . i';
+grid-template-areas:
+  'a . c'
+  'd . f'
+  'g . i';
 ```
 
 上面代码中，中间一列为点，表示没有用到该单元格，或者该单元格不属于任何区域。
@@ -344,7 +347,7 @@ place-items: start end;
 ```css
 .container {
   justify-content: start | end | center | stretch | space-around | space-between | space-evenly;
-  align-content: start | end | center | stretch | space-around | space-between | space-evenly;  
+  align-content: start | end | center | stretch | space-around | space-between | space-evenly;
 }
 ```
 
@@ -361,7 +364,7 @@ space-evenly - 项目与项目的间隔相等，项目与容器边框之间也�
 `place-content`属性是`align-content`属性和`justify-content`属性的合并简写形式。
 
 ```css
-place-content: <align-content<justify-content>
+place-content: <align-content<justify-content>;
 ```
 
 下面是一个例子。
@@ -374,7 +377,7 @@ place-content: space-around space-evenly;
 
 #### 3.8 grid-auto-columns 属性， grid-auto-rows 属性
 
-有时候，一些项目的指定位置，在现有网格的外部。比如网格只有3列，但是某一个项目指定在第5行。这时，浏览器会自动生成多余的网格，以便放置项目。
+有时候，一些项目的指定位置，在现有网格的外部。比如网格只有 3 列，但是某一个项目指定在第 5 行。这时，浏览器会自动生成多余的网格，以便放置项目。
 
 `grid-auto-columns`属性和`grid-auto-rows`属性用来设置，浏览器自动创建的多余网格的列宽和行高。
 
@@ -469,7 +472,7 @@ grid-row-end属性：下边框所在的水平网格线
 配合 `grid-template-areas:` 使用，
 
 ```css
-#cantainer{
+#cantainer {
   grid-template-areas:
     'a a a'
     'b . c'
@@ -521,7 +524,7 @@ place-self: <align-self> <justify-self>;
 
 如果省略第二个值，`place-self`属性会认为这两个值相等。
 
-### 五、画骰子🎲
+### 五、画骰子 🎲
 
 ![image-20210825151535410](grid-flex网页布局教程.assets/image-20210825151535410.png)
 
@@ -591,11 +594,7 @@ place-self: <align-self> <justify-self>;
     </div>
   </body>
 </html>
-
 ```
-
-
-
 
 ## [Flex 布局教程：语法篇](https://www.ruanyifeng.com/blog/2015/07/flex-grammar.html)
 
@@ -616,7 +615,7 @@ Flex 是 Flexible Box 的缩写，意为"弹性布局"，用来为盒状模型�
 Webkit 内核的浏览器，必须加上`-webkit`前缀。
 
 ```css
-.box{
+.box {
   display: -webkit-flex; /* Safari */
   display: flex;
 }
@@ -624,7 +623,7 @@ Webkit 内核的浏览器，必须加上`-webkit`前缀。
 
 注意，设为 Flex 布局以后，子元素的`float`、`clear`和`vertical-align`属性将失效。
 
->  **`vertical-align`** 用来指定行内元素（inline）或表格单元格（table-cell）元素的垂直对齐方式。
+> **`vertical-align`** 用来指定行内元素（inline）或表格单元格（table-cell）元素的垂直对齐方式。
 >
 > `vertical-align` 只对行内元素、表格单元格元素生效：不能用它垂直对齐[块级元素](https://developer.mozilla.org/zh-CN/docs/Web/HTML/Block-level_elements)。
 
@@ -648,7 +647,7 @@ Webkit 内核的浏览器，必须加上`-webkit`前缀。
 
 ### 三、容器的属性
 
-以下6个属性设置在容器上。
+以下 6 个属性设置在容器上。
 
 - `flex-direction`
 - `flex-wrap`
@@ -657,7 +656,7 @@ Webkit 内核的浏览器，必须加上`-webkit`前缀。
 - `align-items`
 - `align-content`
 
-所有CSS属性都会有一个初始值，所以 flex 容器中的所有 flex 元素都会有下列行为：
+所有 CSS 属性都会有一个初始值，所以 flex 容器中的所有 flex 元素都会有下列行为：
 
 - 元素排列为一行 (`flex-direction` 属性的初始值是 `row`)。
 - 元素从主轴的起始线开始。
@@ -668,7 +667,7 @@ Webkit 内核的浏览器，必须加上`-webkit`前缀。
 
 这会让你的元素呈线形排列，并且把自己的大小作为主轴上的大小。如果有太多元素超出容器，它们会溢出而不会换行。如果一些元素比其他元素高，那么元素会沿交叉轴被拉伸来填满它的大小。
 
-#### 3.1 flex-direction属性
+#### 3.1 flex-direction 属性
 
 `flex-direction` 属性决定主轴的方向（即项目的排列方向）。
 
@@ -689,7 +688,7 @@ column-reverse：主轴为垂直方向，起点在下沿。
 
 理解主轴和交叉轴的概念对于对齐 flexbox 里面的元素是很重要的；flexbox 的特性是沿着主轴或者交叉轴对齐之中的元素。
 
-#### 3.2 flex-wrap属性
+#### 3.2 flex-wrap 属性
 
 默认情况下，项目都排在一条线（又称"轴线"）上。
 
@@ -715,9 +714,7 @@ wrap-reverse：换行，第一行在下方。
 }
 ```
 
-
-
-#### 3.4 justify-content属性
+#### 3.4 justify-content 属性
 
 `justify-content`属性定义了项目在主轴上的对齐方式。
 
@@ -736,9 +733,7 @@ space-around：每个项目两侧的间隔相等。所以，项目之间的间�
 space-evenly：所有间隔相等。
 ```
 
-
-
-#### 3.5 align-items属性
+#### 3.5 align-items 属性
 
 `align-items`属性定义项目在交叉轴上如何对齐。
 
@@ -756,17 +751,15 @@ baseline: 项目的第一行文字的基线对齐。
 stretch（默认值）：如果项目未设置高度或设为auto，将占满整个容器的高度。
 ```
 
-
-
-#### 3.6 align-content属性
+#### 3.6 align-content 属性
 
 `align-content`属性定义了多根轴线的对齐方式。
 
 如果项目只有一根轴线，该属性不起作用。
 
-在交叉轴方向上有多行时，align-content属性能作用。
+在交叉轴方向上有多行时，align-content 属性能作用。
 
-多个轴线既：一个容器内多个flex容器。
+多个轴线既：一个容器内多个 flex 容器。
 
 纵向分布
 
@@ -783,11 +776,9 @@ space-around：每根轴线两侧的间隔都相等。所以，轴线之间的�
 stretch（默认值）：轴线占满整个交叉轴。
 ```
 
-
-
 ### 四、项目的属性
 
-以下6个属性设置在项目上。
+以下 6 个属性设置在项目上。
 
 - `order`
 - `flex-grow`
@@ -796,11 +787,11 @@ stretch（默认值）：轴线占满整个交叉轴。
 - `flex`
 - `align-self`
 
-#### 4.1 order属性
+#### 4.1 order 属性
 
 `order`属性定义项目的排列顺序。
 
-数值越小，排列越靠前，默认为0。
+数值越小，排列越靠前，默认为 0。
 
 ```css
 .item {
@@ -808,9 +799,7 @@ stretch（默认值）：轴线占满整个交叉轴。
 }
 ```
 
-
-
-#### 4.2 flex-grow属性
+#### 4.2 flex-grow 属性
 
 `flex-grow`属性定义项目的放大比例，默认为`0`，即如果存在剩余空间，也不放大。
 
@@ -820,13 +809,13 @@ stretch（默认值）：轴线占满整个交叉轴。
 }
 ```
 
-如果所有项目的`flex-grow`属性都为1，则它们将等分剩余空间（如果有的话）。
+如果所有项目的`flex-grow`属性都为 1，则它们将等分剩余空间（如果有的话）。
 
-如果一个项目的`flex-grow`属性为2，其他项目都为1，则前者占据的剩余空间将比其他项多一倍。
+如果一个项目的`flex-grow`属性为 2，其他项目都为 1，则前者占据的剩余空间将比其他项多一倍。
 
-#### 4.3 flex-shrink属性
+#### 4.3 flex-shrink 属性
 
-`flex-shrink`属性定义了项目的缩小比例，默认为1，即如果空间不足，该项目将缩小。
+`flex-shrink`属性定义了项目的缩小比例，默认为 1，即如果空间不足，该项目将缩小。
 
 ```css
 .item {
@@ -834,13 +823,13 @@ stretch（默认值）：轴线占满整个交叉轴。
 }
 ```
 
-如果所有项目的`flex-shrink`属性都为1，当空间不足时，都将等比例缩小。
+如果所有项目的`flex-shrink`属性都为 1，当空间不足时，都将等比例缩小。
 
-如果一个项目的`flex-shrink`属性为0，其他项目都为1，则空间不足时，前者不缩小。
+如果一个项目的`flex-shrink`属性为 0，其他项目都为 1，则空间不足时，前者不缩小。
 
 负值对该属性无效。
 
-#### 4.4 flex-basis属性
+#### 4.4 flex-basis 属性
 
 `flex-basis`属性定义了在分配多余空间之前，项目占据的主轴空间（main size）。
 
@@ -854,9 +843,9 @@ stretch（默认值）：轴线占满整个交叉轴。
 }
 ```
 
-它可以设为跟`width`或`height`属性一样的值（比如350px），则项目将占据固定空间。
+它可以设为跟`width`或`height`属性一样的值（比如 350px），则项目将占据固定空间。
 
-#### 4.5 flex属性
+#### 4.5 flex 属性
 
 `flex`属性是`flex-grow`, `flex-shrink` 和 `flex-basis`的简写，默认值为`0 1 auto`。后两个属性可选。
 
@@ -864,7 +853,7 @@ stretch（默认值）：轴线占满整个交叉轴。
 
 ```css
 .item {
-  flex: none | [ <'flex-grow'> <'flex-shrink'>? || <'flex-basis'> ]
+  flex: none | [ < 'flex-grow' > < 'flex-shrink' >? || < 'flex-basis' > ];
 }
 ```
 
@@ -872,7 +861,7 @@ stretch（默认值）：轴线占满整个交叉轴。
 
 建议优先使用这个属性，而不是单独写三个分离的属性，因为浏览器会推算相关值。
 
-#### 4.6 align-self属性
+#### 4.6 align-self 属性
 
 `align-self`属性允许单个项目有与其他项目不一样的对齐方式，可覆盖`align-items`属性。
 
@@ -884,11 +873,11 @@ stretch（默认值）：轴线占满整个交叉轴。
 }
 ```
 
-该属性可能取6个值，除了`auto`，其他都与`align-items`属性完全一致。
+该属性可能取 6 个值，除了`auto`，其他都与`align-items`属性完全一致。
 
 ## [Flex 布局教程：实例篇](https://www.ruanyifeng.com/blog/2015/07/flex-examples.html)
 
-### 一、画骰子🎲
+### 一、画骰子 🎲
 
 ```html
 <!DOCTYPE html>
@@ -1012,7 +1001,6 @@ stretch（默认值）：轴线占满整个交叉轴。
     </div>
   </body>
 </html>
-
 ```
 
 ### 二、网格布局
@@ -1078,7 +1066,6 @@ stretch（默认值）：轴线占满整个交叉轴。
     </div>
   </body>
 </html>
-
 ```
 
 ### 三、圣杯布局+媒体查询
@@ -1198,16 +1185,71 @@ stretch（默认值）：轴线占满整个交叉轴。
     </div>
   </body>
 </html>
-
 ```
 
 ### 四、双飞翼布局
 
+```html
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+    <style>
+      body {
+        min-width: 600px;
+        margin: 0;
+        padding: 0;
+      }
+      .double main {
+        width: 100%;
+        float: left;
+        min-height: 100px;
+      }
+      .mainWrap {
+        background-color: rgb(232, 255, 170);
+        margin-left: 200px;
+        margin-right: 200px;
+      }
+      .double nav {
+        background-color: lightblue;
+        width: 200px;
+        min-height: 100px;
+        float: left;
+        margin-left: -100%;
+      }
+      .double aside {
+        background-color: rgb(88, 92, 146);
+        width: 200px;
+        float: right;
+        min-height: 100px;
+        margin-left: -200px;
+      }
+      .clearFix::after {
+        content: '';
+        display: table;
+        clear: both;
+      }
+    </style>
+  </head>
+  <body>
+    <header>head</header>
+    <div class="double clearFix">
+      <main>
+        <div class="mainWrap">
+          main main main main main main main main main main main main main main main main main main main main main main
+          main main main main main main main main main main main main main main main main main
+        </div>
+      </main>
+      <nav>nav</nav>
+      <aside>aside</aside>
+    </div>
+    <footer>footer</footer>
+  </body>
+</html>
 ```
-
-```
-
-
 
 ## [Grid and flexbox](https://developer.mozilla.org/zh-CN/docs/Web/CSS/CSS_Grid_Layout/Relationship_of_Grid_Layout#grid_and_flexbox)
 
@@ -1218,7 +1260,7 @@ stretch（默认值）：轴线占满整个交叉轴。
 
 ## [使用媒体查询](https://developer.mozilla.org/zh-CN/docs/Web/CSS/Media_Queries/Using_media_queries)
 
-单位使用rem
+单位使用 rem
 
 ```css
 /* 括号边一定要有空格 */
@@ -1241,4 +1283,3 @@ stretch（默认值）：轴线占满整个交叉轴。
   }
 }
 ```
-

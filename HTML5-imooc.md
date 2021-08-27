@@ -506,6 +506,7 @@ HTML5 适合开发哪些应用？
 - `Element:first-child`
   - 概念
     - 选择属于其父元素的首个子元素的每个 Element 元素
+    - 表示在一组兄弟元素中的第一个元素。
   - 兼容性：
     - IE8+、FireFox、Chrome、Safari、Opera
 - `Element:last-child`
@@ -522,6 +523,7 @@ HTML5 适合开发哪些应用？
   - `Element:nth-child(Number)` ：
     - 选择属于其父元素的第 Number 个子元素
   - `Element:nth-child(n)` ：
+    - `:nth-child(an+b)`
     - **n 是一个简单表达式**，取值从 "0" 开始计算。这里只能是 "n" ，不能用其它字母代替
     - `Element:nth-child(2n+1)`
       - 奇数隔行选择
@@ -539,7 +541,7 @@ HTML5 适合开发哪些应用？
     - IE9+、FireFox4+、Chrome、Safari、Opera
 - `:nth-last-of-type(N)`
   - 概念
-    - 选择器匹配属于父元素的**特定类型**的第 N 个子元素的每个元，,从最后一个子元素开始计数
+    - 选择器匹配属于父元素的**特定类型**的第 N 个子元素的每个元，从最后一个子元素开始计数
   - 兼容性：
     - IE9+、FireFox4+、Chrome、Safari、Opera
 - `:first-of-type`
