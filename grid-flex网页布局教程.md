@@ -1,6 +1,6 @@
 # 网页布局教程
 
-## [CSS Grid 网格布局教程](https://www.ruanyifeng.com/blog/2019/03/grid-layout-tutorial.html)
+## [CSS Grid 网格布局教程-阮一峰](https://www.ruanyifeng.com/blog/2019/03/grid-layout-tutorial.html)
 
 ### 一、概述
 
@@ -1320,35 +1320,77 @@ stretch（默认值）：轴线占满整个交叉轴。
 </html>
 ```
 
-## [Grid and flexbox](https://developer.mozilla.org/zh-CN/docs/Web/CSS/CSS_Grid_Layout/Relationship_of_Grid_Layout#grid_and_flexbox)
+## [Grid and flexbox-MDN](https://developer.mozilla.org/zh-CN/docs/Web/CSS/CSS_Grid_Layout/Relationship_of_Grid_Layout#grid_and_flexbox)
 
 当抉择该用网格还是弹性盒时，你可以问自己一个简单的问题：
 
 - 我只需要按行或者列控制布局？那就用弹性盒子
 - 我需要同时按行和列控制布局？那就用网格
 
-## [使用媒体查询](https://developer.mozilla.org/zh-CN/docs/Web/CSS/Media_Queries/Using_media_queries)
+## [使用媒体查询-MDN](https://developer.mozilla.org/zh-CN/docs/Web/CSS/Media_Queries/Using_media_queries)
+
+### [媒体类型](https://developer.mozilla.org/zh-CN/docs/Web/CSS/Media_Queries/Using_media_queries#媒体类型)
+
+媒体类型（Media types）描述设备的一般类别。除非使用 `not` 或 `only` 逻辑操作符，媒体类型是可选的，并且会（隐式地）应用 `all` 类型。
+
+- `all`
+  - 适用于所有设备。
+- `screen`
+  - 主要用于屏幕。
+
+### [逻辑操作符](https://developer.mozilla.org/zh-CN/docs/Web/CSS/Media_Queries/Using_media_queries#逻辑操作符)
+
+逻辑操作符（logical operators） `not`, `and`, 和 `only` 可用于联合构造复杂的媒体查询，您还可以通过用逗号分隔多个媒体查询，将它们组合为一个规则。
+
+- **`and` 操作符** 用于将多个媒体查询规则**组合成单条媒体查询**，当每个查询规则都为真时则该条媒体查询为真，它还用于将媒体功能与媒体类型结合在一起。
+- **`not`运算符** 用于否定媒体查询，如果不满足这个条件则返回true，否则返回false。 如果出现在以逗号分隔的查询列表中，它将仅否定应用了该查询的特定查询。 如果使用not运算符，则还必须指定媒体类型。
+  - **注意：**在Level 3中，`not`关键字不能用于否定单个媒体功能表达式，而只能用于否定整个媒体查询。
+- **`only`运算符** 仅在整个查询匹配时才用于应用样式，并且对于防止较早的浏览器应用所选样式很有用。 
+  - 当不使用`only`时，旧版本的浏览器会将`screen and (max-width: 500px)`简单地解释为`screen`，忽略查询的其余部分，并将其样式应用于所有屏幕。 
+  - 如果使用`only`运算符，则还必须指定媒体类型。
+- **`,` 逗号** 用于将多个媒体查询**合并为一个规则**。 逗号分隔列表中的每个查询都与其他查询**分开处理**。 
+  - 因此，如果列表中的任何查询为true，则整个media语句均返回true。 换句话说，列表的行为类似于逻辑或`or`运算符。
+
+### [定位媒体特性](https://developer.mozilla.org/zh-CN/docs/Web/CSS/Media_Queries/Using_media_queries#定位媒体特性)
+
+许多媒体功能都是*范围功能*，这意味着可以在它们前面加上“最小”或“最大”来表示“最小条件”或“最大条件”约束。 
+
+```css
+@media (max-width: 12450px) { ... }
+```
+
+
+
+### 媒体查询实例
 
 单位使用 rem
 
 ```css
-/* 括号边一定要有空格 */
-@media screen and (max-width: 374px) {
-  /* iphone5 */
+/* 括号边一定要有空格, only 提高兼容性 */
+@media only screen and (max-width: 374px) {
+  /* iphone5 或者更小的尺寸，以 iphone5 的宽度（320px）比例设置 font-size */
   html {
     font-size: 86px;
   }
 }
-@media screen and (min-width: 375px) and (max-width: 413px) {
-  /* iphone6 7 8 */
+@media only screen and (min-width: 375px) and (max-width: 413px) {
+  /* iphone6/7/8 和 iphone x */
   html {
     font-size: 100px;
   }
 }
-@media screen and (min-width: 414px) {
-  /* iphone6p */
+@media only screen and (min-width: 414px) {
+  /* iphone6p 或者更大的尺寸，以 iphone6p 的宽度（414px）比例设置 font-size */
   html {
     font-size: 110px;
   }
+}
+
+body {
+  font-size: 0.16rem;
+}
+#div1 {
+  width: 1rem;
+  background-color: #ccc;
 }
 ```

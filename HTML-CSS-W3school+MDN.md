@@ -2,6 +2,112 @@
 
 ## 基础教程
 
+> [css现状和如何学习](https://w3cplus.medium.com/css%E7%8E%B0%E7%8A%B6%E5%92%8C%E5%A6%82%E4%BD%95%E5%AD%A6%E4%B9%A0-1ac786328761)
+
+CSS称为 **层叠样式表，**即是 Cascade Style Sheets三个词的首字母缩写。每个字母代表的含义不同：
+
+- **C（Cascade）：**指的是层叠，在CSS中编写样式规则是一个一个排列下来，可以简单的理解为先后顺序
+- **S（Style）** : 第一个S，它指的是样式规则，比如 `body{color: red}`
+- **S（Sheets）** ：第二个S，它指的是样式表，就是我们常说的 `.css` 文件，CSS的代码会放置在样式表里
+
+### 选择器
+
+[选择器相关笔记 HTML5-imooc.md](HTML5-imooc.md)
+
+#### 并列类或标签选择器
+
+两个选择器之间无空格。
+
+```css
+<ul>
+  <li>项目一</li>
+  <li class="special">项目二</li>
+  <li>项目 <em>三</em></li>
+  <span class="special">项目二</span>
+</ul>
+
+
+li.special {
+  color: orange;
+  font-weight: bold;
+}
+```
+
+这个意思是说，“选中每个 `special` 类的 `li` 元素”。
+
+并列选择：
+
+```css
+li.special,
+span.special {
+  color: orange;
+  font-weight: bold;
+}
+```
+
+#### 包含选择符
+
+在两个选择器之间加上一个空格。
+
+该选择器将选择`<li>`内部的任何`<em>`元素（`<li>`的后代）。
+
+```css
+li em {
+  color: rebeccapurple;
+}
+```
+
+#### 相邻兄弟元素选择器
+
+元素 + 相邻兄弟元素 (Element + Sibling )
+
+在两个选择器之间添加一个 `+` 号
+
+```css
+h1 + p {
+  font-size: 200%;
+}
+```
+
+```html
+<h1>I am a level one heading</h1>
+
+<p>This is a paragraph of text. In the text is a <span>span element</span> 
+and also a <a href="#">link</a>.</p>
+
+<p>This is the second paragraph. It contains an <em>emphasized</em> element.</p>
+
+<ul>
+    <li>Item <span>one</span></li>
+    <li>Item two</li>
+    <li>Item <em>three</em></li>
+</ul>
+```
+
+#### 根据状态确定样式
+
+```css
+a:link {
+  color: pink;
+}
+
+a:visited {
+  color: green;
+}
+```
+
+#### [专一性](https://developer.mozilla.org/zh-CN/docs/Learn/CSS/First_steps/How_CSS_is_structured#专一性)
+
+CSS语言有规则来控制在发生碰撞时哪条规则将获胜--这些规则称为**级联规则和专用规则**。
+
+后面的样式覆盖前面的同名样式。
+
+在我们使用类选择器和元素选择器的早期块中，类将获胜。
+
+#### 权重等级与权值：
+
+- 行内样式(1000) > ID 选择器(100) > **类、属性、伪类选择器(10)** > 元素和伪元素(1) > `*(0)`
+
 ### float
 
 脱离文档流，不脱离文本流。
